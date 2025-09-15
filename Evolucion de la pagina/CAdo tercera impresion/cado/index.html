@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-es="CAdo Crecimiento Adolescente" data-en="CAdo Adolescent Growth">CAdo Crecimiento Adolescente</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="imagenes/logo transparente.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div id="particles-js"></div>
+ 
+<header class="fade-in">
+  <div class="container-header">
+    <div class="fila-logo">
+      <span id="logoTexto" class="logo-cado">CAdo</span>
+           <a href="perfil.html" class="icono-usuario" title="Perfil">
+  <i class="fas fa-user-circle" style="font-size:1.5em;"></i>
+</a>
+    </div>
+
+    <div class="fila-menu">
+      <button id="menuToggle" class="hamburger">☰ Menú</button>
+      <button id="translateBtn" data-es="EN" data-en="ES">EN</button>
+    </div>
+
+    <nav class="main-nav">
+      <a href="#somosCAdo"><strong>Quienes Somos</strong></a>
+      <a href="#nuestrosObjetivos"><strong>Nuestra ayuda</strong></a>
+      <a href="#caracteristicas"><strong>Contactos</strong></a>
+      <button id="toggleFormBtn" class="boton-emocion">Selecciona tu emoción</button>
+
+
+      </nav>
+  </div>
+</header>
+
+  <!-- Formulario dentro de un modal para seleccionar la emoción -->
+   
+  <div id="emotionFormModal" class="modal hidden">
+    <div class="modal-content">
+     <h2 class="sentimientos" data-es="¿Cómo te sentís hoy?" data-en="How do you feel today?">¿Cómo te sentís hoy?</h2>
+      <form id="personalization-form">
+       <button id="toggleFormBtn" data-es="Selecciona tu emoción" data-en="Select your emotion">Selecciona tu emoción</button>
+        <select id="emotion" name="emotion" required>
+          <option value="">-- Elegí una emoción --</option>
+          <option value="normal" data-es="Normal" data-en="Normal">Normal</option>
+          <option value="alegria" data-es="Alegría" data-en="Joy">Alegría</option>
+          <option value="furia" data-es="Furia" data-en="Anger">Furia</option>
+          <option value="tristeza" data-es="Tristeza" data-en="Sadness">Tristeza</option>
+          <option value="miedo" data-es="Miedo" data-en="Fear">Miedo</option>
+          <option value="verguenza" data-es="Vergüenza" data-en="Shame">Vergüenza</option>
+        </select><br/>
+        <button type="submit" data-es="Guardar y continuar" data-en="Save and continue">Guardar y continuar</button>
+      </form>
+    </div>
+  </div>
+
+  <section id="hero" class="fade-in" style="height:80vh;">
+  <h1 class="float sentimientos" data-es="Aprende de la adolescencia con CAdo" data-en="Learn from adolescence with CAdo">Aprende de la adolescencia con CAdo</h1>
+   <button onclick="mostrarModal()" class="zoom-effect" data-es="Conoce Más" data-en="Learn More">Conoce Más</button>
+  </section>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content zoom-effect">
+      <h3 id="modalTitle" class="sentimientos" data-es="¡Hola! Gracias por tu interés" data-en="Hi! Thanks for your interest">¡Hola! Gracias por tu interés</h3>
+    <p data-es=" Somos CAdo, un proyecto que tiene un sueño: ayudarte a entender todas las etapas que atravesamos mientras crecemos. Todavía somos jóvenes, pero tenemos personas que nos apoyan, nos escuchan y nos guían. Sabemos que crecer puede dar miedo, pero también es una oportunidad para descubrir tu fuerza, tu voz y tu valor. No estás solo/a en este camino. En CAdo, creemos en vos, en tu historia y en todo lo que podés llegar a ser." 
+   data-en=" We are CAdo, a project with a dream: to help you understand the stages we go through as we grow. We are still young, but we have people who support, listen to, and guide us. We know growing up can be scary, but it's also a chance to discover your strength, your voice, and your worth. You’re not alone on this path. At CAdo, we believe in you, in your story, and in everything you can become.">
+   Somos CAdo, un proyecto que tiene un sueño: ayudarte a entender todas las etapas que atravesamos mientras crecemos. Todavía somos jóvenes, pero tenemos personas que nos apoyan, nos escuchan y nos guían. Sabemos que crecer puede dar miedo, pero también es una oportunidad para descubrir tu fuerza, tu voz y tu valor. No estás solo/a en este camino. En CAdo, creemos en vos, en tu historia y en todo lo que podés llegar a ser.
+</p>
+      <button class="close-btn zoom-effect" onclick="cerrarModal()" data-es="Cerrar" data-en="Close">Cerrar</button>
+    </div>
+  </div>
+
+  <section id="somosCAdo" class="fade-in">
+   <h2 class="section-title float sentimientos" data-es="Somos CAdo" data-en="We are CAdo">Somos CAdo</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2rem;">
+      <img src="imagenes/logo transparente.png" alt="Logo" style="max-width: 250px; width: 100%;" data-aos="fade-right" class="zoom-effect">
+    <p class="destacado" style="max-width: 600px; text-align: center;" data-aos="fade-left" class="zoom-effect"
+         data-es="Un proyecto que busca asistir no solo a los adolescentes, sino también a los pre-adolescentes y adultos para que puedan ayudar y aprender sobre lo que es la adolescencia con sus cambios. Buscamos que la adolescencia no sea una etapa de separación y odio, sino una etapa de cambio para todos."
+         data-en="A project that aims to help not only teenagers but also pre-teens and adults, so they can learn about adolescence and its changes. We seek for adolescence not to be a phase of separation or hatred, but rather a phase of change for everyone.">
+        Un proyecto que busca asistir no solo a los adolescentes, sino también a los pre-adolescentes y adultos para que puedan ayudar y aprender sobre lo que es la adolescencia con sus cambios. Buscamos que la adolescencia no sea una etapa de separación y odio, sino una etapa de cambio para todos.
+      </p>
+    </div>
+  </section>
+
+  <section id="nuestrosObjetivos" style="background: #202020; color: white;">
+    <h2 class="section-title sentimientos" data-es="Nuestra Ayuda" data-en="Our Help">Nuestra Ayuda</h2>
+    <div class="programas">
+     
+      <div class="carta" data-aos="flip-left">
+        <img src="imagnes/osodepeluche.jpg" alt="Preadolescente" style="width:100%; height:250px; object-fit:cover; border-radius:10px;" />
+     <h3 class="sentimientos" data-es="Preadolescente" data-en="Pre-teen">Preadolescente</h3>
+        <p data-es="De 9 a 13 años
+¿Qué cambios tendre? ¿En qué momento? ¿Qué me sucedera? Estas entre otras preguntas son de las más comunes en esta edad, en esta carta intentaremos responder estas y otras preguntas."
+           data-en="From 9 to 13 years old What changes will I have? When will it happen? What will happen to me? These, among other questions, are some of the most common at this age. In this letter, we will try to answer these and other questions.">
+          De 9 a 13 años
+¿Qué cambios tendre? ¿En qué momento? ¿Qué me sucedera? Estas entre otras preguntas son de las más comunes en esta edad, en esta carta intentaremos responder estas y otras preguntas.
+        </p>
+        <a href="preadolecentes.html"><button class="sentimientos" data-es="+ Info" data-en="+ Info">+ Info</button></a>
+      </div>
+
+      
+      <div class="carta" data-aos="flip-up">
+        <img src="imagnes/charlaado.jpg" alt="Adolescentes conversando" style="width:100%; height:250px; object-fit:cover; border-radius:10px;" />
+       <h3 class="sentimientos" data-es="Adolescentes" data-en="Adolescents">Adolescentes</h3>
+        <p data-es="De 13 a 21 años
+¿Qué me pasa? ¿Por qué soy asi? ¿Quién soy? Son preguntas frecuentes, no podemos darte respuestas claras pero podemos darte una guia de lo que podrias hacer para entender y ayudarte."
+           data-en="From 13 to 21 years oldWhat is happening to me? Why am I like this? Who am I? These are common questions, we can't give you clear answers, but we can provide you with a guide on what you could do to understand yourself and help yourself.">
+          De 13 a 21 años
+¿Qué me pasa? ¿Por qué soy así? ¿Quién soy? Son preguntas frecuentes, no podemos darte respuestas claras pero podemos darte una guia de lo que podrias hacer para entender y ayudarte.
+        </p>
+        <a href="adolecente.html"><button class="sentimientos" data-es="+ Info" data-en="+ Info">+ Info</button></a>
+      </div>
+
+      
+      <div class="carta" data-aos="flip-right">
+        <img src="imagnes/adultes.jpg" alt="Padre hablando con hijo" style="width:100%; height:250px; object-fit:cover; border-radius:10px;" />
+        <h3 class="sentimientos" data-es="Adultos" data-en="Adults">Adultos</h3>
+        <p data-es="+21 años
+¿Por qué no me habla? ¿Qué lo hace comportarse así? Seguramente hay situaciones en las que aparecen estas preguntas, pero puede llegar a ser por los cambios de la adolescencia y acá te los enseñamos.
+
+."
+           data-en="+21 years Why doesn't he speak to me? What makes him behave like this? There are certainly situations where these questions arise, but it could be due to changes during adolescence, and we will teach you about that here.">
+          +21 años
+¿Por qué no me habla? ¿Qué lo hace comportarse así? Seguramente hay situaciones en las que aparecen estas preguntas, pero puede llegar a ser por los cambios de la adolescencia y acá te los enseñamos.
+
+.
+        </p>
+        <a href="aDULTOS.HTML"><button class="sentimientos" data-es="+ Info" data-en="+ Info">+ Info</button></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="caracteristicas">
+   <h2 class="section-title sentimientos" data-es="Contactos" data-en="Contacts">Contactos</h2>
+    <ul style="list-style: none; text-align:center; font-size:1.1em;">
+
+ <section id="caracteristicas">
+  <div class="carrusel-contenedor">
+    <div class="carrusel" id="carrusel">
+      <img src="imagenes integrantes/Bian.jpg" alt="">
+      <img src="imagenes integrantes/gaston.jpg" alt="">
+      <img src="imagenes integrantes/Male.JPG" alt="">  
+      <img src="imagenes integrantes/Guadi.jpg" alt="100" style="display: flex;">
+      <img src="imagenes integrantes/El mejor der todos Yo.jpg" alt="">
+    </div>
+    <button class="flecha izquierda" onclick="moverCarrusel(-1)">&#10094;</button>
+    <button class="flecha derecha" onclick="moverCarrusel(1)">&#10095;</button>
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="contactos.html">
+        
+      <button id="conocenosBtn" class="sentimientos zoom-effect" style="background-color: #306acb; color: white;padding: 14px 30px;padding: 14px 30px;
+      border: none; border-radius: 40px;font-size: 1.3rem;font-weight: bold;cursor: pointer;transition: all 0.3s ease;"> Conócenos </button>
+    </a>
+  </div>
+
+
+<script>
+  let indiceCarrusel = 0;
+
+  function moverCarrusel(direccion) {
+    const carrusel = document.getElementById('carrusel');
+    const totalImagenes = carrusel.children.length;
+    indiceCarrusel = (indiceCarrusel + direccion + totalImagenes) % totalImagenes;
+    carrusel.style.transform = `translateX(-${indiceCarrusel * 100}%)`;
+  }
+
+  setInterval(() => moverCarrusel(1), 5000);
+
+      const menuBtn = document.getElementById('menuToggle');
+    const nav = document.querySelector('nav.main-nav');
+    menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+ 
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => nav.classList.remove('visible'));
+  });
+</script>
+</section>
+</section>
+
+
+  <footer>
+    <p class="sentimientos">© CAdo 2025 - Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="java.js"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil de Usuario - CAdo</title>
+  <link rel="shortcut icon" href="imagenes/logo transparente.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<style>
+body { background: #f6f8fb; font-family: Arial, sans-serif; padding: 20px; }
+.card { border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+#historialEmociones { max-height: 220px; overflow-y: auto; }
+</style>
+</head>
+<body>
+<nav class="mb-4">
+  <a href="index.html" class="btn btn-outline-primary"><i class="fas fa-home"></i> Inicio</a>
+  <button id="cerrarSesionBtn" class="btn btn-outline-danger float-end">Cerrar sesión</button>
+</nav>
+
+<!-- Login -->
+<div id="loginSection" class="container" style="max-width:400px;">
+  <h3>Iniciar sesión</h3>
+  <div class="card p-3">
+    <label>Alias:</label>
+    <input type="text" id="loginAlias" class="form-control mb-3" placeholder="Tu alias">
+    <button id="loginBtn" class="btn btn-primary w-100">Entrar</button>
+  </div>
+</div>
+
+<!-- Perfil -->
+<div id="perfilSection" class="container" style="display:none;">
+  <h2>Perfil de Usuario</h2>
+
+  <!-- Datos básicos -->
+  <div class="card p-3 mb-3">
+    <h5>Datos básicos</h5>
+    <label>Alias:</label>
+    <input id="alias" class="form-control mb-2">
+    <label>Edad (opcional):</label>
+    <input id="edad" type="number" min="1" class="form-control mb-2">
+    <button id="guardarPerfilBtn" class="btn btn-success">Guardar perfil</button>
+    <div id="perfilInfo" class="mt-2 text-muted"></div>
+  </div>
+
+  <!-- Registrar emoción -->
+  <div class="card p-3 mb-3">
+    <h5>Registrar emoción</h5>
+    <select id="emocionSelect" class="form-select mb-2">
+      <option value="">-- Selecciona una emoción --</option>
+      <option value="alegria">😊 Alegría</option>
+      <option value="tristeza">😔 Tristeza</option>
+      <option value="furia">😡 Furia</option>
+      <option value="miedo">😨 Miedo</option>
+      <option value="verguenza">😳 Vergüenza</option>
+      <option value="normal">😌 Normal</option>
+    </select>
+    <button id="guardarEmocionBtn" class="btn btn-primary">Guardar emoción</button>
+  </div>
+
+  <!-- Historial -->
+  <div class="card p-3 mb-3">
+    <h5>Historial de emociones</h5>
+    <ul id="historialEmociones" class="list-unstyled mb-0"></ul>
+  </div>
+
+  <!-- Gráfico -->
+  <div class="card p-3">
+    <h5>Gráfico de emociones</h5>
+    <canvas id="graficoEmociones"></canvas>
+  </div>
+</div>
+
+<script>
+const loginSection = document.getElementById('loginSection');
+const perfilSection = document.getElementById('perfilSection');
+const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
+const loginBtn = document.getElementById('loginBtn');
+const loginAlias = document.getElementById('loginAlias');
+
+const aliasInput = document.getElementById('alias');
+const edadInput = document.getElementById('edad');
+const perfilInfo = document.getElementById('perfilInfo');
+const historialList = document.getElementById('historialEmociones');
+const ctx = document.getElementById('graficoEmociones').getContext('2d');
+let chartInstance = null;
+
+function getUsuarios() {
+  return JSON.parse(localStorage.getItem('usuarios') || '{}');
+}
+function saveUsuarios(data) {
+  localStorage.setItem('usuarios', JSON.stringify(data));
+}
+function getSesionActual() {
+  return localStorage.getItem('sesionActual');
+}
+function setSesionActual(alias) {
+  localStorage.setItem('sesionActual', alias);
+}
+function borrarSesionActual() {
+  localStorage.removeItem('sesionActual');
+}
+function mostrarPerfil() {
+  const sesion = getSesionActual();
+  if (!sesion) return;
+  const usuarios = getUsuarios();
+  const userData = usuarios[sesion] || { perfil:{}, historial:[] };
+  aliasInput.value = userData.perfil.alias || sesion;
+  edadInput.value = userData.perfil.edad || '';
+  perfilInfo.textContent = `Perfil de ${sesion}`;
+  mostrarHistorial(userData.historial);
+  graficarEmociones(userData.historial);
+}
+function mostrarHistorial(historial) {
+  if (!historial.length) {
+    historialList.innerHTML = '<li class="text-muted">-- vacío --</li>';
+    return;
+  }
+  historialList.innerHTML = historial.slice().reverse().map(e =>
+    `<li>📅 ${e.fecha} (${e.hora}) – ${emojiEmocion(e.emocion)} ${capitalize(e.emocion)}</li>`
+  ).join('');
+}
+function graficarEmociones(historial) {
+  const conteo = historial.reduce((acc,e)=>{acc[e.emocion]=(acc[e.emocion]||0)+1;return acc;},{});
+  const labels = Object.keys(conteo);
+  const data = Object.values(conteo);
+  if (chartInstance) {
+    chartInstance.data.labels = labels;
+    chartInstance.data.datasets[0].data = data;
+    chartInstance.update();
+    return;
+  }
+  chartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{ data, backgroundColor: ['#fbc02d','#1976d2','#f44336','#9c27b0','#f06292','#305dea'] }]
+    },
+    options: { plugins: { legend: { display: false } }, responsive: true, scales:{y:{beginAtZero:true}} }
+  });
+}
+function emojiEmocion(e) {
+  return { alegria:"😊",tristeza:"😔",furia:"😡",miedo:"😨",verguenza:"😳",normal:"😌" }[e] || "🙂";
+}
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+// Guardar emoción
+function guardarEmocionPerfil() {
+  const emocion = document.getElementById('emocionSelect').value;
+  if (!emocion) { alert('Selecciona una emoción'); return; }
+  const sesion = getSesionActual();
+  if (!sesion) return;
+  const usuarios = getUsuarios();
+  if (!usuarios[sesion]) usuarios[sesion] = { perfil:{alias: sesion}, historial: [] };
+  usuarios[sesion].historial.push({
+    fecha: new Date().toLocaleDateString(),
+    hora: new Date().toLocaleTimeString(),
+    emocion: emocion
+  });
+  saveUsuarios(usuarios);
+  mostrarPerfil();
+}
+
+// Eventos
+loginBtn.addEventListener('click', () => {
+  const alias = loginAlias.value.trim();
+  if (!alias) { alert('Ingresa un alias'); return; }
+  const usuarios = getUsuarios();
+  if (!usuarios[alias]) usuarios[alias] = { perfil:{alias}, historial:[] };
+  saveUsuarios(usuarios);
+  setSesionActual(alias);
+  loginSection.style.display = 'none';
+  perfilSection.style.display = 'block';
+  mostrarPerfil();
+});
+cerrarSesionBtn.addEventListener('click', () => {
+  borrarSesionActual();
+  perfilSection.style.display = 'none';
+  loginSection.style.display = 'block';
+});
+document.getElementById('guardarPerfilBtn').addEventListener('click', () => {
+  const sesion = getSesionActual();
+  if (!sesion) return;
+  const usuarios = getUsuarios();
+  usuarios[sesion].perfil = { alias: aliasInput.value.trim(), edad: edadInput.value.trim() };
+  saveUsuarios(usuarios);
+  mostrarPerfil();
+  alert('Perfil guardado');
+});
+document.getElementById('guardarEmocionBtn').addEventListener('click', guardarEmocionPerfil);
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (getSesionActual()) {
+    loginSection.style.display = 'none';
+    perfilSection.style.display = 'block';
+    mostrarPerfil();
+  }
+});
+</script>
+</body>
+</html>

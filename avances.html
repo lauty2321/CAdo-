@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avances de CAdo - Nuestra Historia</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #0a0d9e;
+      --secondary-color: #0f4bf3;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --pink-color: #ec4899;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --shadow: 0 10px 25px rgba(0,0,0,0.1);
+      --gradient-fun: linear-gradient(135deg, #083979 0%, #2274e0 50%, #026efa 100%);
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--bg-light);
+      overflow-x: hidden;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      opacity: 1;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      margin: auto;
+      transform: scale(0.7);
+      transition: transform 0.3s ease;
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 15px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      color: white;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+      background: rgba(255,255,255,0.2);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .close-modal:hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.1);
+    }
+
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .modal-nav:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .modal-prev {
+      left: -70px;
+    }
+
+    .modal-next {
+      right: -70px;
+    }
+
+    /* Animated background shapes */
+    .bg-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float-shapes 20s infinite ease-in-out;
+    }
+
+    .shape:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      background: var(--primary-color);
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .shape:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      background: var(--accent-color);
+      top: 60%;
+      right: 10%;
+      animation-delay: -5s;
+    }
+
+    .shape:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      background: var(--pink-color);
+      bottom: 20%;
+      left: 20%;
+      animation-delay: -10s;
+    }
+
+    @keyframes float-shapes {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(180deg); }
+    }
+
+    /* Header */
+    .header {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid var(--primary-color);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-fun);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo-tagline {
+      background: var(--primary-color);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-toggle:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-fun);
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+
+    .main-nav a:hover::before,
+    .main-nav a.active::before {
+      left: 0;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--gradient-fun);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+      animation: drift 30s linear infinite;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-50px, -50px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      animation: bounce-in 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      animation: fade-in-up 1s ease-out 0.3s both;
+    }
+
+    @keyframes bounce-in {
+      0% { transform: scale(0.3) translateY(100px); opacity: 0; }
+      50% { transform: scale(1.05) translateY(-10px); }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    @keyframes fade-in-up {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Timeline Innovation */
+    .timeline-section {
+      padding: 100px 20px;
+      background: var(--white);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-fun);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    /* Interactive Timeline */
+    .timeline-interactive {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary-color), var(--pink-color));
+      border-radius: 2px;
+    }
+
+    .milestone {
+      position: relative;
+      margin: 60px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slide-in-view 0.8s ease-out forwards;
+    }
+
+    .milestone:nth-child(1) { animation-delay: 0.1s; }
+    .milestone:nth-child(2) { animation-delay: 0.2s; }
+    .milestone:nth-child(3) { animation-delay: 0.3s; }
+    .milestone:nth-child(4) { animation-delay: 0.4s; }
+    .milestone:nth-child(5) { animation-delay: 0.5s; }
+    .milestone:nth-child(6) { animation-delay: 0.6s; }
+    .milestone:nth-child(7) { animation-delay: 0.7s; }
+
+    @keyframes slide-in-view {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .milestone-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .milestone:nth-child(even) .milestone-content {
+      flex-direction: row-reverse;
+    }
+
+    .milestone-icon {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 60px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      border: 4px solid var(--primary-color);
+      z-index: 10;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .milestone-icon:hover {
+      transform: translateX(-50%) scale(1.2) rotate(15deg);
+      background: var(--primary-color);
+      color: white;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+
+    .milestone-card {
+      flex: 1;
+      background: var(--white);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .milestone-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient-fun);
+    }
+
+    .milestone-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .milestone-card:hover::after {
+      opacity: 1;
+    }
+
+    .milestone-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .milestone:nth-child(1) .milestone-card::before { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+    .milestone:nth-child(2) .milestone-card::before { background: linear-gradient(90deg, #10b981, #059669); }
+    .milestone:nth-child(3) .milestone-card::before { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+    .milestone:nth-child(4) .milestone-card::before { background: linear-gradient(90deg, #8b5cf6, #7c3aed); }
+    .milestone:nth-child(5) .milestone-card::before { background: linear-gradient(90deg, #ec4899, #db2777); }
+    .milestone:nth-child(6) .milestone-card::before { background: linear-gradient(90deg, #06b6d4, #0891b2); }
+    .milestone:nth-child(7) .milestone-card::before { background: linear-gradient(90deg, #84cc16, #65a30d); }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .card-text {
+      color: var(--text-light);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    /* Logo Evolution */
+    .logo-showcase {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: flex-start;
+    }
+
+    .logo-version {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: rgb(64, 183, 230);
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .logo-version:nth-child(1) { background: linear-gradient(135deg, #263da3, #764ba2); }
+    .logo-version:nth-child(2) { background: linear-gradient(135deg, #f093fb, #f5576c); }
+    .logo-version:nth-child(3) { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+    .logo-version:nth-child(4) { background: linear-gradient(135deg, #23cfe6, #0714cf); }
+    .logo-version:nth-child(5) { background: linear-gradient(135deg, #8c00ff, #0714cf); }
+
+    .logo-version:hover {
+      transform: scale(1.2) rotate(10deg);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Fun Stats */
+    .stats-section {
+      background: linear-gradient(135deg, #0927ac 0%, #0f72e2 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      animation: count-up 2s ease-out;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    @keyframes count-up {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text-dark);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Image Styles with cursor pointer */
+    .logo-showcase img.logo-img,
+    .logo-img,
+    .logoimg {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .logo-showcase img.logo-img:hover,
+    .logo-img:hover,
+    .logoimg:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .logo-showcase img.logo-img,
+    .logo-img {
+      width: 80px;
+      height: 110px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #374151;
+    }
+
+    .logoimg {
+       width: 110px;
+      height: 110px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #374151;
+    }
+
+    .logo-version {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .milestone-card::after {
+      pointer-events: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        box-shadow: var(--shadow);
+        padding: 20px;
+      }
+
+      .main-nav.active {
+        display: flex;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .milestone-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .milestone:nth-child(even) .milestone-content {
+        flex-direction: column;
+      }
+
+      .timeline-line {
+        display: none;
+      }
+
+      .milestone-icon {
+        position: relative;
+        transform: none;
+        margin-bottom: 20px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .modal-nav {
+        display: none;
+      }
+
+      .close-modal {
+        top: -60px;
+        right: 10px;
+      }
+    }
+
+    /* Scroll animations */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Add zoom indicator */
+    .logo-img::after,
+    .logoimg::after {
+      content: '🔍';
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 4px 6px;
+      border-radius: 50%;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo-img:hover::after,
+    .logoimg:hover::after {
+      opacity: 1;
+    }
+    .apoyos-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* espacio entre imágenes */
+  align-items: center; /* centra cada imagen */
+}
+
+.apoyos-grid img {
+  max-width: 300px; /* controla el ancho máximo */
+  width: 100%;
+  height: auto;
+}
+.apoyos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.apoyo-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.apoyo-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.apoyo-img:hover {
+  transform: scale(1.05);
+}
+
+.apoyo-texto h4 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.apoyo-texto p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* En celular pasa a columna */
+@media (max-width: 768px) {
+  .apoyo-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .apoyo-img {
+    margin-bottom: 10px;
+  }
+}
+/* ---- Estilos para la sección de equipo mini ---- */
+.equipo-mini {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+.equipo-mini .miembro {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  width: 170px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.equipo-mini .miembro:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.equipo-mini .miembro img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease;
+}
+
+.equipo-mini .miembro img:hover {
+  transform: scale(1.05);
+}
+
+.equipo-mini .miembro h4 {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.equipo-mini .miembro p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.equipo-mini .miembro small {
+  display: block;
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .equipo-mini {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .equipo-mini .miembro {
+    width: 90%;
+    max-width: 300px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <button class="modal-nav modal-prev">‹</button>
+      <img id="modalImage" src="" alt="Imagen ampliada">
+      <button class="modal-nav modal-next">›</button>
+    </div>
+  </div>
+
+  <!-- Background Shapes -->
+  <div class="bg-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-section">
+          <div class="logo">CAdo</div>
+          <div class="logo-tagline">🚀 Nuestra Historia</div>
+        </div>
+
+        <button class="nav-toggle" onclick="toggleNav()">
+          <i class="fas fa-bars"></i> Menú
+        </button>
+
+        <nav class="main-nav" id="mainNav">
+          <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Nuestra Historia de Éxito</h1>
+      <p class="hero-subtitle">Desde una idea hasta transformar vidas: el increíble viaje de CAdo</p>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">El Camino del Éxito</h2>
+        <p class="section-subtitle">Cada paso ha sido importante en nuestra misión de acompañar adolescentes</p>
+      </div>
+
+      <div class="timeline-interactive">
+        <div class="timeline-line"></div>
+
+        <!-- Milestone 1 -->
+        <div class="milestone">
+          <div class="milestone-icon">💡</div>
+          <div class="milestone-content">
+            <div class="milestone-card">
+              <div class="card-header">
+                <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                <h3 class="card-title">Nace CAdo</h3>
+              </div>
+              <p class="card-text">CAdo nació como un capricho, un proyecto sin rumbo, solo por el gusto de crear. Todo cambió cuando escuchamos: 'Todos los adolescentes son insoportables'. Esa frase despertó nuestra curiosidad y nos hizo replantearnos cómo mirar y acompañar a los adolescentes. Lo que empezó como un juego se transformó en un proyecto con alma, pensado para escuchar, aprender y generar un impacto real.</p>
+            </div>
+          </div>
+        </div>
+
+    
+ <!-- Milestone 2 -->
+<div class="milestone">
+  <div class="milestone-icon">👥</div>
+  <div class="milestone-content">
+    <div class="milestone-card">
+      <div class="card-header">
+        <div class="card-icon"><i class="fas fa-users"></i></div>
+        <h3 class="card-title">Creación del equipo</h3>
+      </div>
+      <p class="card-text">
+        Lo que empezó como una idea suelta necesitaba personas que le dieran vida. 
+        Fue entonces cuando nació nuestro equipo, un grupo de adolescentes que, 
+        con sus sueños y talentos, decidieron apostar por algo más grande que ellos mismos. 
+        No fue casualidad, sino una mezcla de amistad, pasión y el deseo de cambiar la forma 
+        en que se vive la adolescencia. 
+      </p>
+      <p class="card-text">
+        Cada integrante llegó con una chispa especial: algunos con la creatividad para diseñar 
+        mundos, otros con la empatía para escuchar y acompañar, algunos con la técnica para 
+        programar y otros con la energía para contagiar entusiasmo. De esa mezcla nació un 
+        equipo fuerte y diverso. No todos pensaban igual, y justamente en esas diferencias 
+        encontramos la riqueza que nos impulsó a crecer. 
+      </p>
+      <p class="card-text">
+        Así se formó la familia de CAdo: un espacio donde cada voz tiene valor, donde cada idea 
+        suma, y donde cada esfuerzo tiene un impacto. Desde el primer día supimos que este camino 
+        no sería fácil, pero juntos nos convencimos de que valía la pena. Porque más que un 
+        proyecto, lo que creamos fue una comunidad.
+      </p>
+
+      <!-- Mini perfiles del equipo -->
+      <div class="equipo-mini">
+        <div class="miembro">
+          <img src="img/integrantes/Male.jpg" alt="Male">
+          <h4>Male</h4>
+          <p>Encargada de la información<br><small>Curiosa, amante de la música y el estudio, siempre aportando claridad y conocimiento.</small></p>
+        </div>
+        <div class="miembro">
+          <img src="img/integrantes/Bian.jpg" alt="Bianca">
+          <h4>Bianca</h4>
+          <p>Actividades con personas<br><small>Su energía y empatía son el motor que une al grupo y lo acerca a la gente.</small></p>
+        </div>
+        <div class="miembro">
+          <img src="img/integrantes/gaston.jpg" alt="Gastón">
+          <h4>Gastón</h4>
+          <p>Creador de CAdo<br><small>Visionario y soñador, quien encendió la primera chispa que dio vida a todo.</small></p>
+        </div>
+        <div class="miembro">
+          <img src="img/integrantes/Guadi.jpg" alt="Guada">
+          <h4>Guada</h4>
+          <p>Marketing y diseño<br><small>Creativa y optimista, dio forma a la identidad visual de nuestro proyecto.</small></p>
+        </div>
+        <div class="miembro">
+          <img src="img/integrantes/El mejor der todos Yo.jpg" alt="Lautaro">
+          <h4>Lautaro</h4>
+          <p>Programador<br><small>Con cada línea de código construye los puentes que nos conectan con todos.</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Milestone 3 -->
+<div class="milestone">
+  <div class="milestone-icon">💻</div>
+  <div class="milestone-content">
+    <div class="milestone-card">
+      <div class="card-header">
+        <div class="card-icon"><i class="fas fa-code"></i></div>
+        <h3 class="card-title">Evolución de la Página</h3>
+      </div>
+      <p class="card-text">CAdo creció y se transformó paso a paso: de una primera versión sencilla, a una segunda más funcional, hasta convertirse en la plataforma completa y atractiva que es hoy.
+        <br>🔹 Versión 1 — El comienzo sencillo.
+La primera versión de CAdo era muy básica: un diseño simple, sin demasiados colores ni detalles, pero con la ilusión de mostrar la idea inicial. Fue nuestro "boceto digital".</br>
+<br>🔹 Versión 2 — La primera mejora.
+Después nos animamos a darle más estilo y contenido. Agregamos secciones mejor organizadas, empezamos a trabajar con animaciones y el sitio empezó a sentirse más vivo y atractivo.</br>
+<br>🔹 Versión 3 — Hacia lo profesional.
+En la tercera versión, prestamos especial atención a los comentarios que nos hicieron y a los aspectos que consideramos importantes, logrando que la página se vea más clara y completa. Agregamos nuevas funcionalidades, mejoramos el diseño y la hicimos completamente responsive,</br>
+<br>🔹 Versión 4 — Mejorando lo que teniamos.  
+La cuarta versión de CAdo marcó un verdadero avance: mejoramos todo lo que ya teníamos y añadimos nuevas funcionalidades, como una entrada más dinámica, perfiles de usuario y secciones interactivas que enriquecen la experiencia. Con diseño moderno, navegación clara y totalmente responsive, la página se volvió más atractiva
+</br>
+      </p>
+      
+      <!-- Botones de evolución -->
+<div class="logo-showcase">
+  <a href="Evolucion de la pagina/CAdo primera impresion/index.html" class="logo-version">Version1</a>
+  <a href="Evolucion de la pagina/cado mejorado/index.html" class="logo-version">Version2</a>
+  <a href="Evolucion de la pagina/CAdo segunda impresion/index.html" class="logo-version">Version3</a>
+  <a href="Evolucion de la pagina/CAdo tercera impresion/index.html" class="logo-version">Version4</a>
+  <a href="index.html" class="logo-version">Hoy</a>
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- Milestone 4 -->
+<div class="milestone">
+  <div class="milestone-icon">🎨</div>
+  <div class="milestone-content">
+    <div class="milestone-card">
+      <div class="card-header">
+        <div class="card-icon"><i class="fas fa-palette"></i></div>
+        <h3 class="card-title">Evolución del Logo</h3>
+      </div>
+      <p class="card-text">Nuestro logo ha evolucionado junto con CAdo, reflejando cada paso de nuestra identidad. Todo empezó con un boceto, luego lo digitalizamos y más adelante creamos dos versiones especialmente pensadas para redes sociales. Cada cambio nos acercó más al diseño que nos representa hoy. Descubre las 5 versiones que cuentan esta historia visual:</p>
+      
+      <!-- Logos cargados -->
+      <div class="logo-showcase">
+        <img src="img/logos/primerlogoCAdo.jpeg" alt="Logo versión 1" class="logo-img" data-gallery="logos">
+        <img src="img/logos/logo transparente.png" alt="Logo versión 2" class="logo-img" data-gallery="logos">
+        <img src="img/logos/logo nuevo 1 .jpg" alt="Logo versión 3" class="logo-img" data-gallery="logos">
+        <img src="img/logos/logo nuevo 2 .jpg" alt="Logo versión 4" class="logo-img" data-gallery="logos">
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- Milestone 5 -->
+        <div class="milestone">
+          <div class="milestone-icon">🏆</div>
+          <div class="milestone-content">
+            <div class="milestone-card">
+              <div class="card-header">
+                <div class="card-icon"><i class="fas fa-trophy"></i></div>
+                <h3 class="card-title">Feria de ciencias</h3>
+              </div>
+              <p class="card-text">¡En la feria de ciencias brillamos como diamantes! Presentamos CAdo al mundo y recibimos aplausos por nuestra innovación: ¡fue nuestro momento de alfombra roja! Pasamos la primera y segunda instancia, y aunque no llegamos a la tercera, aprendimos un montón y nos quedamos con más ganas de seguir creciendo. ¡Esperamos con ansias presentarnos el año que viene!</p>
+                <div class="logo-showcase">
+                  <img src="img/secciones/stand.jpg" alt="Stand de la feria" class="logoimg" data-gallery="feria">
+                  <img src="img/secciones/cado1.jpg" alt="Presentación CAdo" class="logoimg" data-gallery="feria">
+                   <img src="img/secciones/diploma.jpg" alt="Diploma obtenido" class="logoimg" data-gallery="feria">
+                   </div>
+            </div>
+          </div>
+        </div>
+
+<!-- Milestone 6 -->
+<div class="milestone">
+  <div class="milestone-icon">🤝</div>
+  <div class="milestone-content">
+    <div class="milestone-card">
+      <div class="card-header">
+        <div class="card-icon"><i class="fas fa-heart"></i></div>
+        <h3 class="card-title">Equipo que nos ayudan y apoyan</h3>
+      </div>
+      <p class="card-text">
+        Profesores, Psicologa, psicopedagoga... todos se volvieron nuestros apoyo para seguir.  
+        Un agradecimiento especial al <strong>Colegio Mano Amiga</strong>, que nos brinda la educación, el espacio y el apoyo constante para crecer y llevar adelante este proyecto.  
+        Su acompañamiento fue clave en cada paso de nuestra aventura.
+      </p>
+
+      <!-- Lista de apoyos con mini biografías -->
+      <div class="apoyos-lista">
+        <div class="apoyo-item">
+          <img src="img/secciones/Gladys.jpg" alt="Docentes" class="apoyo-img" data-gallery="apoyos">
+          <div class="apoyo-texto">
+            <h4>Gladys-Profesora</h4>
+            <p>Gladys fue mucho más que una docente: con su paciencia, sus consejos y su fe en nosotros, se convirtió en una guía fundamental. Su apoyo constante nos inspiró a dar lo mejor y a creer en lo que estábamos construyendo.</p>
+          </div>
+        </div>
+
+        <div class="apoyo-item">
+          <img src="img/secciones/Andres.jpg" alt="Familias" class="apoyo-img" data-gallery="apoyos">
+          <div class="apoyo-texto">
+            <h4>Andres-Profesor</h4>
+            <p>Queremos agradecer a Andrés por dedicar su tiempo a revisar nuestra página y ayudarnos a identificar los puntos fuertes. Gracias a sus observaciones y consejos, pudimos mejorar la presentación y destacar lo más importante de nuestro proyecto.</p>
+          </div>
+        </div>
+
+        <div class="apoyo-item">
+          <img src="img/secciones/Pao psicopedagoga.jpg" alt="Colegio Mano Amiga" class="apoyo-img" data-gallery="apoyos">
+          <div class="apoyo-texto">
+            <h4>Paola-Psicopedagoga</h4>
+            <p>Queremos agradecerle por su valiosa ayuda en nuestro proyecto. Gracias a su orientación y conocimiento, pudimos organizar y comprender mejor toda la información, haciendo que nuestra página sea más clara, completa y útil.</p>
+          </div>
+        </div>
+
+        <div class="apoyo-item">
+          <img src="img/secciones/Florci.jpg" alt="" class="apoyo-img" data-gallery="apoyos">
+          <div class="apoyo-texto">
+            <h4>Flor-Profesora</h4>
+            <p>Queremos agradecer a Flor por compartir su conocimiento y brindarnos información valiosa para nuestro proyecto. Gracias a su aporte, nuestra página pudo incluir contenido más preciso, fundamentado y enriquecedor. ¡Su colaboración hizo una gran diferencia!</p>
+          </div>
+        </div>
+ 
+        <div class="apoyo-item">
+          <img src="img/secciones/Sol.jpg" alt="Amigos" class="apoyo-img" data-gallery="apoyos">
+          <div class="apoyo-texto">
+            <h4>Sol-Profesora</h4>
+            <p>Queremos agradecer a Sol por todo el conocimiento y la información tan útil que compartió con nosotros. Su generosidad y disposición nos ayudaron muchísimo y marcaron una gran diferencia en nuestro proyecto.</p>
+          </div>
+        </div>
+
+        <div class="apoyo-item">
+          <img src="img/secciones/Mayra.jpg" alt="Tecnología" class="apoyo-img" data-gallery="apoyos">
+          <div class="apoyo-texto">
+            <h4>Mayra-Profesora y Secretaria</h4>
+            <p>Queremos agradecer a Mayra por todo lo que nos brindó: su información, su tiempo y, sobre todo, por escucharnos con paciencia y dedicación. Su apoyo fue clave para que el proyecto creciera y tomara más fuerza.</p>
+          </div>
+        </div>
+
+        <div class="apoyo-item">
+          <img src="img/secciones/augusto.jpg" alt="Profesores" class="apoyo-img" data-gallery="apoyos">
+          <div class="apoyo-texto">
+            <h4>Augusto-Profesor</h4>
+            <p>Queremos agradecer a Augusto por su apoyo y la información que compartió con nosotros. Su tiempo y disposición fueron muy valiosos y ayudaron a que nuestro proyecto sea más completo</p>
+          </div>
+        </div>
+
+        <div class="apoyo-item">
+          <img src="img/secciones/sol nutri.jpg" alt="Comunidad" class="apoyo-img" data-gallery="apoyos">
+          <div class="apoyo-texto">
+            <h4>Sol-Nutricionista</h4>
+            <p>Queremos agradecer a Sol por toda la información y el conocimiento que nos compartió. Su generosidad y dedicación hicieron una gran diferencia en nuestro proyecto</p>
+          </div>
+        </div>
+      
+ 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- Milestone 7 -->
+        <div class="milestone">
+          <div class="milestone-icon">🚀</div>
+          <div class="milestone-content">
+            <div class="milestone-card">
+              <div class="card-header">
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                <h3 class="card-title">CAdo Hoy</h3>
+              </div>
+              <p class="card-text">Hoy, CAdo es mucho más que una startup: es un espacio que transforma vidas reales. Día a día trabajamos con pasión e innovación, buscando siempre nuevas formas de ayudar y acompañar a los adolescentes en su crecimiento. Cada logro, cada mejora y cada idea que implementamos está pensado para empoderar a los jóvenes, inspirarlos a descubrir su potencial y darles herramientas para enfrentar el mundo con confianza.
+
+Nos sentimos orgullosos de lo que hemos construido, pero sabemos que esto es solo el comienzo. Seguimos creciendo, aprendiendo y cumpliendo sueños, con la mirada puesta en un futuro brillante donde cada adolescente tenga la oportunidad de desarrollarse, expresarse y dejar su huella. CAdo no solo crea proyectos, crea posibilidades, esperanza y cambios reales en la vida de quienes lo necesitan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <h2 style="font-size: 2.5rem; margin-bottom: 50px; font-weight: 800;">CAdo en Números</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">70+</span>
+          <span class="stat-label">Horas de Código</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">40+</span>
+          <span class="stat-label">Horas de busqueda de informacion </span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Pasión & Amor</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p><i class="fas fa-heart" style="color: #60a5fa;"></i> CAdo 2025 - Transformando el futuro, un adolescente a la vez</p>
+    </div>
+  </footer>
+
+  <script>
+    let currentImageIndex = 0;
+    let currentGallery = [];
+    let allImages = [];
+
+    // Initialize modal functionality
+    function initImageModal() {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const closeBtn = document.querySelector('.close-modal');
+      const prevBtn = document.querySelector('.modal-prev');
+      const nextBtn = document.querySelector('.modal-next');
+      
+      // Get all clickable images
+      allImages = document.querySelectorAll('.logo-img, .logoimg');
+      
+      // Add click event to each image
+      allImages.forEach((img, index) => {
+        img.addEventListener('click', function() {
+          openModal(img, index);
+        });
+      });
+
+      // Close modal events
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+
+      // Navigation events
+      prevBtn.addEventListener('click', showPrevImage);
+      nextBtn.addEventListener('click', showNextImage);
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (modal.classList.contains('show')) {
+          switch(e.key) {
+            case 'Escape':
+              closeModal();
+              break;
+            case 'ArrowLeft':
+              showPrevImage();
+              break;
+            case 'ArrowRight':
+              showNextImage();
+              break;
+          }
+        }
+      });
+    }
+
+    function openModal(img, index) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      
+      // Determine gallery based on data-gallery attribute or all images
+      const gallery = img.getAttribute('data-gallery');
+      if (gallery) {
+        currentGallery = Array.from(document.querySelectorAll(`[data-gallery="${gallery}"]`));
+        currentImageIndex = currentGallery.indexOf(img);
+      } else {
+        currentGallery = Array.from(allImages);
+        currentImageIndex = index;
+      }
+      
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      
+      modal.style.display = 'flex';
+      setTimeout(() => {
+        modal.classList.add('show');
+      }, 10);
+      
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('show');
+      
+      setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+
+    function showPrevImage() {
+      currentImageIndex = (currentImageIndex - 1 + currentGallery.length) % currentGallery.length;
+      updateModalImage();
+    }
+
+    function showNextImage() {
+      currentImageIndex = (currentImageIndex + 1) % currentGallery.length;
+      updateModalImage();
+    }
+
+    function updateModalImage() {
+      const modalImg = document.getElementById('modalImage');
+      const currentImg = currentGallery[currentImageIndex];
+      
+      modalImg.style.opacity = '0.5';
+      modalImg.style.transform = 'scale(0.9)';
+      
+      setTimeout(() => {
+        modalImg.src = currentImg.src;
+        modalImg.alt = currentImg.alt;
+        modalImg.style.opacity = '1';
+        modalImg.style.transform = 'scale(1)';
+      }, 150);
+    }
+
+    function toggleNav() {
+      document.getElementById('mainNav').classList.toggle('active');
+    }
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Add click effects to milestone icons
+    document.querySelectorAll('.milestone-icon').forEach(icon => {
+      icon.addEventListener('click', function() {
+        this.style.animation = 'none';
+        setTimeout(() => {
+          this.style.animation = 'bounce-in 0.6s ease-out';
+        }, 10);
+      });
+    });
+
+    // Add hover sound effect simulation
+    document.querySelectorAll('.milestone-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'none';
+      });
+    });
+
+    // Close nav when clicking outside
+    document.addEventListener('click', function(e) {
+      const nav = document.getElementById('mainNav');
+      const toggle = document.querySelector('.nav-toggle');
+      
+      if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+        nav.classList.remove('active');
+      }
+    });
+
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initImageModal();
+    });
+  </script>
+</body>
+</html>

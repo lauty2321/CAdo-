@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAdo - Crecimiento Adolescente</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="imagenes/logo transparente.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <header>
+    <div class="container">
+      <div class="logo" data-es="CAdo" data-en="CAdo">CAdo</div>
+      <nav>
+        <a href="#somosCAdo" data-es="Quienes Somos" data-en="Who We Are">Quienes Somos</a>
+        <a href="#nuestrosObjetivos" data-es="Nuestra ayuda" data-en="Our Help">Nuestra ayuda</a>
+        <a href="#caracteristicas" data-es="Contactos" data-en="Contacts">Contactos</a>
+      </nav>
+      <button id="translateBtn">EN</button>
+    </div>
+  </header>
+
+  <section id="hero">
+    <h1 data-es="Bienvenido a CAdo" data-en="Welcome to CAdo">Bienvenido a CAdo</h1>
+ <button onclick="mostrarModal()" data-es="Conoce Más" data-en="Learn More">Conoce Más</button>
+  </section>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <h3 id="modalTitle" data-es="¡Hola! Gracias por tu interés" data-en="Hi! Thanks for your interest">¡Hola! Gracias por tu interés</h3>
+      <p data-es="CAdo es un programa dedicado al desarrollo y bienestar de los adolescentes. ¡Súmate y crezcamos juntos!"
+         data-en="CAdo is a program dedicated to the development and well-being of adolescents. Join us and let's grow together!">
+        CAdo es un programa dedicado al desarrollo y bienestar de los adolescentes. ¡Súmate y crezcamos juntos!
+      </p>
+      <button class="close-btn" onclick="cerrarModal()" data-es="Cerrar" data-en="Close">Cerrar</button>
+    </div>
+  </div>
+
+  <section id="somosCAdo">
+    <h2 class="section-title" data-es="Somos CAdo" data-en="We are CAdo">Somos CAdo</h2>
+    <p style="text-align:center; max-width: 800px; margin: auto;" 
+       data-es="Un proyecto, que busca ayudar no solo a los adolescentes, sino tambien, a los pre-adolescentes y adultos, para que puedan ayudar y aprender sobre lo que es la adolescencia con sus cambios. Buscamos que la adolescencia no sea una etapa de separacion u odio, sino, una etapa de cambio para todos."
+       data-en="A project that aims to help not only teenagers but also pre-teens and adults, so they can learn about adolescence and its changes. We seek for adolescence not to be a phase of separation or hatred, but rather a phase of change for everyone.">
+      Un proyecto, que busca ayudar no solo a los adolescentes, sino tambien, a los pre-adolescentes y adultos, para que puedan ayudar y aprender sobre lo que es la adolescencia con sus cambios. Buscamos que la adolescencia no sea una etapa de separacion u odio, sino, una etapa de cambio para todos.
+    </p>
+  </section>
+
+<section id="nuestrosObjetivos" style="background: #202020; color: white;">
+  <h2 class="section-title" data-es="Nuestra Ayuda" data-en="Our Help">Nuestra Ayuda</h2>
+  <div class="programas">
+
+    <!-- Preadolescentes -->
+    <div class="carta" data-aos="flip-left">
+      <img src="imagnes/osodepeluche.jpg" alt="Preadolescente" style="width:100%; border-radius: 10px;" />
+      <h3 data-es="Preadolescente" data-en="Pre-teen">Preadolescente</h3>
+      <p data-es="Resolvemos dudas sobre los primeros cambios del crecimiento."
+         data-en="We answer questions about the first growth changes.">
+        Resolvemos dudas sobre los primeros cambios del crecimiento.
+      </p>
+      <a href="preadolecentes.html"><button data-es="+ Info" data-en="+ Info">+ Info</button></a>
+    </div>
+
+    <!-- Adolescentes -->
+    <div class="carta" data-aos="flip-up">
+      <img src="imagnes/charlaado.jpg" alt="Adolescentes conversando" style="width:100%; border-radius: 10px;" />
+      <h3 data-es="Adolescentes" data-en="Adolescents">Adolescentes</h3>
+      <p data-es="Guía para descubrir quién eres y cómo cuidarte."
+         data-en="A guide to discovering who you are and how to take care of yourself.">
+        Guía para descubrir quién eres y cómo cuidarte.
+      </p>
+      <a href="adolecente.html"><button data-es="+ Info" data-en="+ Info">+ Info</button></a>
+    </div>
+
+    <!-- Adultos -->
+    <div class="carta" data-aos="flip-right">
+      <img src="imagnes/adultes.jpg" alt="Padre hablando con hijo" style="width:100%; border-radius: 10px;" />
+      <h3 data-es="Adultos" data-en="Adults">Adultos</h3>
+      <p data-es="Herramientas para comprender mejor a tus hijos o estudiantes adolescentes."
+         data-en="Tools to better understand your teenage children or students.">
+        Herramientas para comprender mejor a tus hijos o estudiantes adolescentes.
+      </p>
+      <a href="aDULTOS.HTML"><button data-es="+ Info" data-en="+ Info">+ Info</button></a>
+    </div>
+
+  </div>
+</section>
+
+
+  <section id="caracteristicas">
+    <h2 class="section-title" data-es="Contactos" data-en="Contacts">Contactos</h2>
+    <ul style="list-style: none; text-align:center; font-size:1.1em;">
+      <li data-es="Instagram: @CAdo_CrecimientoAdolescente" data-en="Instagram: @CAdo_Adolescent Growth">Instagram: @CAdo_CrecimientoAdolescente</li>
+      <li data-es="Email:CAdoCrecimientoAdolescente@gmail.com" data-en="Email:  CAdoCrecimientoAdolescente@gmail.com">Email: contacto@cado.org</li>
+      <ul data-es="Tel: +54 9 11 59625690 (Gastón) 
+      +54 9 11 22842085 (Bianca) 
+      +54 9 11 26544906 (Lautaro) 
+      +54 9 11 27783246 (Alma)" data-en="Phone: +54 9 11 59625690 (Gastón) 
+      +54 9 11 22842085 (Bianca) 
+      +54 9 11 26544906 (Lautaro) 
+      +54 9 11 27783246 (Alma)"></ul>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© CAdo 2025 - Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="java.js"></script>
+</body>
+</html>

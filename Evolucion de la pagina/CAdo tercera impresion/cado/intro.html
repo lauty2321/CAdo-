@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intro CAdo</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <h1 id="title" class="title"></h1>
+
+  <script src="assets/script.js"></script>
+  <script>
+    // Ocultamos la pregunta y opciones si existieran en script.js
+    document.addEventListener("DOMContentLoaded", () => {
+      const q = document.getElementById("question");
+      const c = document.getElementById("choices");
+      if (q) q.style.display = "none";
+      if (c) c.style.display = "none";
+    });
+
+    // Pasados 10 segundos redirige a la página principal
+    setTimeout(() => {
+      window.location.href = "index.html"; // <-- tu página principal
+    }, 5000);
+  </script>
+</body>
+</html>

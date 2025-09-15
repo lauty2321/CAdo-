@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-es="Adultos - CAdo Interactivo" data-en="Adults - CAdo Interactivo">Adultos - CAdo Interactivo</title>
+  <link href="styles.css" rel="stylesheet" />
+   <link rel="shortcut icon" href="imagenes/logo transparente.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">CAdo</div>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="preadolecentes.html">Preadolescentes</a>
+        <a href="adolecente.html">Adolescentes</a>
+        <a href="aDULTOS.HTML" class="active">Adultos</a>
+      </nav>
+      <button id="translateBtn">EN</button>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 6rem;">
+    <section data-aos="fade-up">
+      <h1 data-es="Adultos: Herramientas para Comprender a los Adolescentes" data-en="Adults: Tools to Understand Teenagers">Adultos: Herramientas para Comprender a los Adolescentes</h1>
+      <p data-es="Ser adulto y acompañar a adolescentes puede ser un desafío. Aquí encontrarás recursos, consejos prácticos y testimonios para entender mejor y apoyar a los jóvenes en su desarrollo."
+         data-en="Being an adult and accompanying teenagers can be a challenge. Here you'll find resources, practical tips, and testimonials to better understand and support young people in their development.">
+         Ser adulto y acompañar a adolescentes puede ser un desafío. Aquí encontrarás recursos, consejos prácticos y testimonios para entender mejor y apoyar a los jóvenes en su desarrollo.
+      </p>
+    </section>
+
+    <section data-aos="fade-up" data-aos-delay="200">
+      <h2 data-es="¿Cómo entender la adolescencia?" data-en="How to understand adolescence?">¿Cómo entender la adolescencia?</h2>
+      <ul>
+        <li data-es="Reconocer los cambios físicos y emocionales que atraviesan los adolescentes." data-en="Recognize the physical and emotional changes teenagers go through.">Reconocer los cambios físicos y emocionales que atraviesan los adolescentes.</li>
+        <li data-es="Ser paciente y escuchar activamente." data-en="Be patient and listen actively.">Ser paciente y escuchar activamente.</li>
+        <li data-es="Fomentar la comunicación abierta y sincera." data-en="Promote open and honest communication.">Fomentar la comunicación abierta y sincera.</li>
+        <li data-es="Apoyar su autonomía sin perder el acompañamiento." data-en="Support their autonomy while staying involved.">Apoyar su autonomía sin perder el acompañamiento.</li>
+      </ul>
+    </section>
+
+    <section data-aos="fade-up" data-aos-delay="400">
+      <h2 data-es="Consejos para padres, profesores y adultos" data-en="Tips for parents, teachers, and adults">Consejos para padres, profesores y adultos</h2>
+      <ul>
+        <li data-es="Infórmate sobre el desarrollo adolescente y sus desafíos." data-en="Inform yourself about adolescent development and its challenges.">Infórmate sobre el desarrollo adolescente y sus desafíos.</li>
+        <li data-es="Establece límites claros pero flexibles." data-en="Set clear but flexible boundaries.">Establece límites claros pero flexibles.</li>
+        <li data-es="Promueve espacios de confianza y diálogo en casa o en la escuela." data-en="Promote spaces of trust and dialogue at home or in school.">Promueve espacios de confianza y diálogo en casa o en la escuela.</li>
+        <li data-es="Busca apoyo profesional si ves señales de problemas emocionales." data-en="Seek professional help if you notice signs of emotional problems.">Busca apoyo profesional si ves señales de problemas emocionales.</li>
+      </ul>
+    </section>
+
+    <section data-aos="fade-up" data-aos-delay="600">
+      <h2 data-es="Testimonios en Video" data-en="Video Testimonials">Testimonios en Video</h2>
+      <p data-es="Escucha a padres, docentes y psicólogos compartir sus experiencias y consejos:"
+         data-en="Listen to parents, teachers, and psychologists share their experiences and advice:">
+         Escucha a padres, docentes y psicólogos compartir sus experiencias y consejos:
+      </p>
+      <div class="video-testimonios">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/U5ThD41kv5g" title="Testimonio padre adolescente" frameborder="0" allowfullscreen></iframe>
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/7MuHKy7gkRk" title="Consejos docente adolescencia" frameborder="0" allowfullscreen></iframe>
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/AK_52Ffmu4I" title="Psicóloga sobre adolescencia" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section data-aos="fade-up" data-aos-delay="800" class="testimonial-quotes">
+      <h2 data-es="Experiencias y consejos" data-en="Experiences and Advice">Experiencias y consejos</h2>
+      <blockquote data-es="Aprender a escuchar a mi hijo fue clave para mejorar nuestra relación." data-en="Learning to listen to my son was key to improving our relationship.">"Aprender a escuchar a mi hijo fue clave para mejorar nuestra relación."</blockquote>
+      <blockquote data-es="Como profesor, entendí que la paciencia es fundamental en esta etapa." data-en="As a teacher, I understood that patience is fundamental in this stage.">"Como profesor, entendí que la paciencia es fundamental en esta etapa."</blockquote>
+      <blockquote data-es="El acompañamiento profesional puede hacer la diferencia." data-en="Professional support can make a difference.">"El acompañamiento profesional puede hacer la diferencia."</blockquote>
+    </section>
+  </main>
+
+  <footer>
+    <p>CAdo Interactivo &copy; 2025</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script>
+    const translateBtn = document.getElementById('translateBtn');
+    let currentLang = 'es';
+    translateBtn.addEventListener('click', () => {
+      const elements = document.querySelectorAll('[data-es][data-en]');
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      translateBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
+      elements.forEach(el => {
+        el.textContent = el.getAttribute(`data-${currentLang}`);
+      });
+    });
+  </script>
+</body>
+</html>

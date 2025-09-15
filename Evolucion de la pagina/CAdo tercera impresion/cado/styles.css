@@ -1,0 +1,1482 @@
+/* Reset y base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #e6f0ff, #ffffff);
+  overflow-x: hidden;
+  color: #000;
+  transition: background-color 0.5s ease;
+  line-height: 1.6;
+}
+
+/* Cambiar color de elementos cuando se selecciona una emoción */
+body.alegria .logo,
+body.alegria nav a,
+body.alegria #toggleFormBtn,
+body.alegria button {
+  color: #fbc02d; 
+}
+
+body.furia .logo,
+body.furia nav a,
+body.furia #toggleFormBtn,
+body.furia button {
+  color: #f44336; 
+}
+
+body.tristeza .logo,
+body.tristeza nav a,
+body.tristeza #toggleFormBtn,
+body.tristeza button {
+  color: #1976d2; 
+}
+
+body.miedo .logo,
+body.miedo nav a,
+body.miedo #toggleFormBtn,
+body.miedo button {
+  color: #9c27b0; 
+}
+
+body.verguenza .logo,
+body.verguenza nav a,
+body.verguenza #toggleFormBtn,
+body.verguenza button {
+  color: #f06292;
+}
+/* Cambiar fondo general del body según emoción */
+body.alegria {
+  background: linear-gradient(to right, #fff9c4, #fffde7); 
+}
+
+body.furia {
+  background: linear-gradient(to right, #ffebee, #ffcdd2); 
+}
+
+body.tristeza {
+  background: linear-gradient(to right, #e3f2fd, #bbdefb);
+}
+
+body.miedo {
+  background: linear-gradient(to right, #f3e5f5, #e1bee7);
+}
+
+body.verguenza {
+  background: linear-gradient(to right, #fce4ec, #f8bbd0); 
+}
+
+body.normal {
+  background: linear-gradient(to right, #e6f0ff, #ffffff); 
+}
+/* Botón "Selecciona tu emoción" */
+#toggleFormBtn {
+  background: linear-gradient(to right, #305dea, #1e3ac7);
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(48, 93, 234, 0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#toggleFormBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(48, 93, 234, 0.6);
+}
+#emotionFormModal .modal-content select,
+#emotionFormModal .modal-content button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+#emotionFormModal .modal-content button[type="submit"] {
+  background-color: #305dea;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#emotionFormModal .modal-content button[type="submit"]:hover {
+  background-color: #1e3ac7;
+}
+body.alegria .sentimientos {
+  color: #fbc02d; 
+}
+
+body.furia .sentimientos {
+  color: #f44336; 
+}
+
+body.tristeza .sentimientos {
+  color: #1976d2; 
+}
+
+body.miedo .sentimientos {
+  color: #9c27b0; 
+}
+
+body.verguenza .sentimientos {
+  color: #f06292; 
+}
+
+body.normal .sentimientos {
+  color: #305dea; 
+}
+/* Aplicar color emocional a elementos con .sentimientos */
+body.alegria .sentimientos {
+  color: #fbc02d;
+}
+
+body.furia .sentimientos {
+  color: #f44336;
+}
+
+body.tristeza .sentimientos {
+  color: #1976d2;
+}
+
+body.miedo .sentimientos {
+  color: #9c27b0;
+}
+
+body.verguenza .sentimientos {
+  color: #f06292;
+}
+
+body.normal .sentimientos {
+  color: #305dea;
+}
+/* Color emocional aplicado a fondo de botones u objetos con fondo celeste */
+body.alegria .emocion-bg {
+  background-color: #fbc02d;
+}
+body.furia .emocion-bg {
+  background-color: #f44336;
+}
+body.tristeza .emocion-bg {
+  background-color: #1976d2;
+}
+body.miedo .emocion-bg {
+  background-color: #9c27b0;
+}
+body.verguenza .emocion-bg {
+  background-color: #f06292;
+}
+body.normal .emocion-bg {
+  background-color: #305dea;
+}
+
+/* Para textos o bordes que usaban color celeste */
+body.alegria .emocion-text {
+  color: #fbc02d;
+}
+body.furia .emocion-text {
+  color: #f44336;
+}
+body.tristeza .emocion-text {
+  color: #1976d2;
+}
+body.miedo .emocion-text {
+  color: #9c27b0;
+}
+body.verguenza .emocion-text {
+  color: #f06292;
+}
+body.normal .emocion-text {
+  color: #305dea;
+}
+.frase-emocion {
+  background-color: #ffffffee;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 2000;
+  max-width: 90%;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.frase-emocion button {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #555;
+  cursor: pointer;
+}
+/* Frase al lado del logo cambia de color según emoción */
+body.alegria .frase-cado {
+  color: #fbc02d;
+}
+body.furia .frase-cado {
+  color: #f44336;
+}
+body.tristeza .frase-cado {
+  color: #1976d2;
+}
+body.miedo .frase-cado {
+  color: #9c27b0;
+}
+body.verguenza .frase-cado {
+  color: #f06292;
+}
+body.normal .frase-cado {
+  color: #305dea;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  padding-left: 0.3rem;
+  margin-left: 0;
+  flex-wrap: nowrap;
+}
+
+#logoTexto {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #305dea;
+  margin-right: 0.4rem;
+  white-space: nowrap;
+}
+
+.frase-cado {
+  font-size: 1rem;              
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60vw;                 
+  line-height: 1.1;
+  transition: opacity 0.8s ease;
+  opacity: 1;
+}
+
+.frase-cado.fade-out {
+  opacity: 0;
+}
+
+/* para celus  */
+@media (max-width: 600px) {
+  #logoTexto {
+    font-size: 1.2rem;
+  }
+
+  .frase-cado {
+    font-size: 0.52rem;
+    max-width: 65vw;
+  }
+}
+/* Header */
+header {
+  background-color: #ffffff;
+    display: flex;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeDown 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  height: 50px;
+}
+
+@keyframes fadeDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.container {
+  width: 100%;
+  padding: 0 1rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  margin: 0 1rem;
+  position: relative;
+  font-weight: 500;
+}
+
+nav a::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: #305dea;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+
+/* Botón de traducción */
+#translateBtn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #305dea;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+#translateBtn:hover {
+  background-color: #1e3ac7;
+}
+
+/* Hero */
+#hero {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("imagenes/cado2.jpg") center center no-repeat;
+  background-size: cover; /* Por defecto en escritorio */
+  
+  height: 80vh; 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+  padding: 2rem;
+  margin-top: 100px;
+}
+
+/* En móviles, que se vea completa */
+@media (max-width: 768px) {
+  #hero {
+    
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+header {
+  background-color: white;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.container-header {
+  width: 100%;
+  margin: 0;
+}
+
+.main-nav {
+  background-color: white;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 2rem;
+  }
+
+  #hero button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+#hero h1 {
+  font-size: 4em;
+  margin-bottom: 1rem;
+  animation: floatText 3s ease-in-out infinite;
+}
+
+@keyframes floatText {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+#hero button {
+  background-color: #305dea;
+  border: none;
+  padding: 15px 35px;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#hero button:hover {
+  background-color: #1e3ac7;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Secciones */
+section {
+  padding: 4rem 1rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  color: #305dea;
+  font-weight: 700;
+}
+
+/* Cartas en sección "Nuestra Ayuda" */
+.programas {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.carta {
+  background-color: white;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px;
+  flex: 1 1 300px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(48, 93, 234, 0.15);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.carta:hover {
+  transform: translateY(-8px);
+}
+
+.carta h3 {
+  margin-bottom: 1rem;
+  color: #305dea;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.carta p {
+  margin-bottom: 1.2rem;
+  color: #555;
+  font-size: 1rem;
+}
+
+.carta button {
+  background-color: #305dea;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-weight: 700;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.carta button:hover {
+  background-color: #1e3ac7;
+}
+
+/* Videos responsivos */
+.video-testimonios {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.video-testimonios iframe {
+  max-width: 100%;
+  height: auto;
+  flex: 1 1 300px;
+}
+
+/* Testimonios */
+.testimonial-quotes {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.testimonial-quotes h2 {
+  font-size: 2em;
+  color: #305dea;
+  margin-bottom: 30px;
+}
+
+.testimonial-quotes blockquote {
+  font-style: italic;
+  background: white;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  border-left: 5px solid #305dea;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  color: #1a2a6c;
+  border-radius: 8px;
+}
+/* SomosCAdo */
+.destacado {
+  font-weight: 600;
+  font-size: 1.15rem;
+  font-family: 'Roboto Slab', serif;
+  color: #222;
+  line-height: 1.8;
+}
+/* Contactos */
+#caracteristicas ul li {
+  margin: 0.7rem 0;
+  font-size: 1rem;
+}
+
+/* Footer */
+footer {
+  background-color: #305dea;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+/* Partículas */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0;
+  left: 0;
+    pointer-events: none;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animación para el título flotante */
+@keyframes floatText {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+.float {
+  animation: floatText 3s ease-in-out infinite;
+}
+
+/* Fade-in para entradas suaves */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn ease 2s;
+}
+
+/* Zoom al pasar el mouse */
+.zoom-effect {
+  transition: transform 0.5s ease;
+}
+.zoom-effect:hover {
+  transform: scale(1.05);
+}
+
+/* Ajustes para logo en header */
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.logo span {
+  vertical-align: middle;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+/* Contenedor general de los videos testimoniales */
+.video-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Tarjeta que contiene cada video */
+.video-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 320px;
+  flex: 1 1 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo para el video embebido */
+.video-card iframe {
+  width: 100%;
+  height: 180px;
+  border: none;
+  display: block;
+}
+
+/* Estilo para la reflexión debajo de cada video */
+.video-reflexion {
+  padding: 0.8rem 1rem 1rem 1rem;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Efecto zoom al pasar el mouse */
+.zoom-effect {
+  transition: transform 0.5s ease;
+}
+.zoom-effect:hover {
+  transform: scale(1.05);
+}
+/*  todo el contenido del main */
+main.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* Centrar listas manteniendo su alineación interna a la izquierda */
+main.container ul {
+  display: inline-block;
+  text-align: left;
+}
+
+/* Solo los títulos en azul */
+main.container h1 {
+  color: #3366ff;
+}
+
+/* Párrafos y listas en negro */
+main.container p,
+main.container ul li {
+  color: #000000;
+}
+
+/* Espaciado entre secciones */
+main.container section {
+  margin-bottom: 3rem;
+}
+/*estilos de preadolescentes*/
+.card {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 1rem;
+  text-align: justify;
+  line-height: 1.6;
+}
+main.container h2 {
+  color: #3366ff;
+}
+main.container {
+  text-align: center;
+}
+
+main.container ul {
+  display: inline-block;
+  text-align: left;
+}
+
+
+main.container p,
+main.container ul li {
+  color: #000000;
+}
+
+
+main.container section {
+  margin-bottom: 3rem;
+}
+/* Formulario de Consultas */
+.formulario {
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 320px;
+  border-radius: 8px;
+  margin: 2rem auto;
+}
+
+.formulario label {
+  display: block;
+  margin-top: 10px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  background-color: #e8e8e8;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.formulario input[type="submit"] {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #3366ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.formulario input[type="submit"]:hover {
+  background-color: #3366ff;
+}
+
+#confirmacion {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+  color: #3366ff;
+  font-weight: bold;
+  display: none;
+}
+
+
+/* Mostrar en móviles */
+@media (max-width: 768px) {
+  #menuToggle {
+    display: block;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #305dea;
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  nav.main-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  nav.main-nav.show {
+    display: flex;
+    position: relative;
+  }
+}
+
+
+    body {
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 0rem 1rem;
+      margin-top: -0.3rem;
+    }
+
+    .logo-texto {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #logoTexto {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #1f4ed8;
+    }
+
+    .frase-cado {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #b9f925;
+    }
+
+    nav.main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .boton-emocion {
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #305dea;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .boton-emocion:hover {
+      background-color: #264bd1;
+    }
+
+    #translateBtn {
+      margin-left: 1rem;
+      padding: 5px 10px;
+      font-weight: bold;
+      background-color: #305dea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav.main-nav {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+        width: 100%;
+        display: none;
+      }
+      nav.main-nav.show {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+        margin-top: 0.5rem;
+      }
+    }
+
+header {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.logo-texto {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#logoTexto {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #305dea;
+}
+
+.frase-cado {
+  font-size: 1rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #305dea;
+  cursor: pointer;
+   flex-direction: column-reverse;
+}
+
+#translateBtn {
+  background-color: #305dea;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.5rem 1rem;
+}
+
+@media (max-width: 768px) {
+  .logo-texto {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hamburger {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #305dea;
+    cursor: pointer;
+  }
+}
+
+/* En escritorio el botón no se ve */
+.hamburger {
+  display: none;
+}
+
+/* Estilo base */
+.fila-logo, .fila-menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Solo mostrar menú en móvil */
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .fila-logo {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .fila-menu {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #logoTexto {
+    font-size: 1.4rem;
+  }
+
+  .frase-cado {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60%;
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 1.3rem;
+    background: none;
+    border: none;
+    color: #305dea;
+    cursor: pointer;
+  }
+
+  #translateBtn {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    background-color: #305dea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+  nav.main-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  nav.main-nav.show {
+    display: flex;
+  }
+}.container-header {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Línea: Logo + Frase */
+.fila-logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Línea: Menú + EN */
+.fila-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.3rem;
+}
+
+#logoTexto {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #305dea;
+}
+
+.frase-cado {
+  font-size: 0.75rem;
+  color: #333;
+  max-width: 70%;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hamburger {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: #305dea;
+  cursor: pointer;
+}
+
+#translateBtn {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #305dea;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Solo mostrar menú en móvil */
+nav.main-nav {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+nav.main-nav.show {
+  display: flex;
+}
+
+@media (min-width: 769px) {
+  .hamburger, .fila-menu {
+    display: none;
+  }
+
+  nav.main-nav {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0;
+  }
+
+  .container-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .fila-logo {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .frase-cado {
+    font-size: 1rem;
+    max-width: none;
+    text-align: left;
+    white-space: normal;
+  }
+}
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container-header,
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+@media (max-width: 768px) {
+  .frase-cado {
+    font-size: 0.95rem;
+    color: #333;
+    text-align: left;
+    max-width: 100%;
+    white-space: normal;
+    margin-top: 0.2rem;
+  }
+}
+#logoTexto {
+  font-size: 1.8rem; /* aumentamos */
+  font-weight: 800;
+  color: #305dea;
+}
+
+@media (max-width: 768px) {
+  #logoTexto {
+    font-size: 2rem;
+    margin-bottom: 0.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .container-header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .fila-logo {
+    margin-bottom: 0.3rem;
+  }
+}
+#logoTexto {
+  font-size: 2.4rem; /* antes 1.4 o 1.8 */
+  font-weight: 900;
+  color: #305dea;
+}
+.frase-cado {
+  font-size: 1.15rem; /* más grande */
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  max-width: 50vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 768px) {
+  .frase-cado {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+}
+@media (min-width: 769px) {
+  .fila-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .container-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+}
+.menu-navegacion {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: #2e2e2e;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 0;
+  background: #4285f4;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.menu-botones {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.idioma, .hamburguesa {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.idioma {
+  background-color: #4285f4;
+  color: white;
+}
+
+.idioma:hover {
+  background-color: #306acb;
+}
+
+.hamburguesa {
+  display: none;
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    gap: 1rem;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.activo {
+    display: flex;
+  }
+
+  .hamburguesa {
+    display: block;
+  }
+}
+/*carrusel*/
+.carrusel-contenedor {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.carrusel {
+  display: flex;
+  transition: transform 0.6s ease;
+
+}
+
+.carrusel img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.flecha:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.flecha.izquierda {
+  left: 15px;
+}
+
+.flecha.derecha {
+  right: 15px;
+}
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 50px; /* debajo del header */
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .main-nav.visible {
+    display: flex;
+  }
+}
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 50px; /* justo debajo del header */
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .main-nav.visible {
+    display: flex;
+  }
+}

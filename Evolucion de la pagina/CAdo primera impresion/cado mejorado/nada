@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-es="Adolescentes - CAdo  Crecimiento Adolescente" data-en="Adolescents - CAdo Adolescent Growth">
+    Adolescentes - CAdo Crecimiento Adolescente
+  </title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="shortcut icon" href="imagenes/logo transparente.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo"><span>CAdo</span></div>
+      <nav>
+        <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+        <a href="preadolecentes.html" data-es="Preadolescentes" data-en="Preteens">Preadolescentes</a>
+        <a href="adolecente.html" class="active" data-es="Adolescentes" data-en="Adolescents">Adolescentes</a>
+        <a href="aDULTOS.HTML" data-es="Adultos" data-en="Adults">Adultos</a>
+      </nav>
+      <button id="translateBtn">EN</button>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 6rem;">
+    <section data-aos="fade-up">
+      <h1 data-es="Adolescentes: Descubre Quién Eres y Cuídate"
+          data-en="Adolescents: Discover Who You Are and Take Care of Yourself">
+        Adolescentes: Descubre Quién Eres y Cuídate
+      </h1>
+      <p data-es="La adolescencia es un período de exploración y crecimiento personal. Aquí te ofrecemos herramientas, consejos y experiencias reales para vivir esta etapa con mayor confianza y bienestar."
+         data-en="Adolescence is a time of exploration and personal growth. Here we offer tools, advice, and real experiences to live this stage with greater confidence and well-being.">
+        La adolescencia es un período de exploración y crecimiento personal...
+      </p>
+    </section>
+
+    <section data-aos="fade-up" data-aos-delay="200">
+      <h2 class="section-title"
+          data-es="Características de la adolescencia"
+          data-en="Characteristics of Adolescence">Características de la adolescencia</h2>
+      <ul>
+        <li data-es="Identidad: búsqueda de sentido y definición personal." data-en="Identity: search for meaning and personal definition.">Identidad: búsqueda de sentido y definición personal.</li>
+        <li data-es="Relaciones: importancia de la amistad, el amor y la familia." data-en="Relationships: importance of friendship, love, and family.">Relaciones: importancia de la amistad, el amor y la familia.</li>
+        <li data-es="Autonomía: deseo de independencia y toma de decisiones." data-en="Autonomy: desire for independence and decision-making.">Autonomía: deseo de independencia y toma de decisiones.</li>
+        <li data-es="Desafíos emocionales: ansiedad, estrés y autoestima fluctuante." data-en="Emotional challenges: anxiety, stress, and fluctuating self-esteem.">Desafíos emocionales: ansiedad, estrés y autoestima fluctuante.</li>
+      </ul>
+    </section>
+
+    <section data-aos="fade-up" data-aos-delay="300">
+      <h2 class="section-title"
+          data-es="Consejos para una adolescencia saludable"
+          data-en="Tips for a Healthy Adolescence">Consejos para una adolescencia saludable</h2>
+      <ul>
+        <li data-es="Comunícate abierta y sinceramente con tus padres o adultos de confianza." data-en="Communicate openly and sincerely with your parents or trusted adults.">Comunícate abierta y sinceramente con tus padres o adultos de confianza.</li>
+        <li data-es="Practica actividades que disfrutes para reducir el estrés y ganar confianza." data-en="Engage in enjoyable activities to reduce stress and build confidence.">Practica actividades que disfrutes para reducir el estrés y ganar confianza.</li>
+        <li data-es="Cuida tu salud mental: busca ayuda si sientes ansiedad o tristeza profunda." data-en="Take care of your mental health: seek help if you feel anxious or deeply sad.">Cuida tu salud mental: busca ayuda si sientes ansiedad o tristeza profunda.</li>
+        <li data-es="Fomenta amistades positivas que te apoyen y respeten." data-en="Foster positive friendships that support and respect you.">Fomenta amistades positivas que te apoyen y respeten.</li>
+      </ul>
+    </section>
+
+    <section class="testimonial-quotes" data-aos="fade-up" data-aos-delay="400">
+      <h2 data-es="Testimonios reales" data-en="Real Testimonials">Testimonios reales</h2>
+      <div class="video-gallery">
+        <div class="video-card zoom-effect">
+          <iframe src="https://www.youtube.com/embed/3dkl_et6zcc" title="Testimonio de Fabiana sobre salud mental" allowfullscreen></iframe>
+          <p class="video-reflexion" data-es="Valorarse a uno mismo y buscar apoyo cuando se necesita." data-en="Value yourself and seek help when needed.">"Valorarse a uno mismo y buscar apoyo cuando se necesita."</p>
+        </div>
+        <div class="video-card zoom-effect">
+          <iframe src="https://www.youtube.com/embed/1BaKmmTSUds" title="Testimonio de Diego sobre apoyo emocional" allowfullscreen></iframe>
+          <p class="video-reflexion" data-es="El apoyo familiar y tener metas ayudan a enfrentar desafíos emocionales." data-en="Family support and having goals help face emotional challenges.">"El apoyo familiar y tener metas ayudan a enfrentar desafíos emocionales."</p>
+        </div>
+        <div class="video-card zoom-effect">
+          <iframe src="https://www.youtube.com/embed/3dkl_et6zcc" title="Testimonio de Carla Herrero sobre bullying" allowfullscreen></iframe>
+          <p class="video-reflexion" data-es="Romper el silencio y buscar ayuda contra el bullying." data-en="Break the silence and seek help against bullying.">"Romper el silencio y buscar ayuda contra el bullying."</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up" data-aos-delay="500">
+      <h2 class="section-title" data-es="¿Sabías que...?" data-en="Did you know...?">¿Sabías que...?</h2>
+      <p data-es="Más del 50% de los adolescentes han sentido ansiedad alguna vez, pero menos del 20% busca ayuda profesional. Hablar, compartir y buscar guía puede marcar una gran diferencia en tu vida."
+         data-en="More than 50% of teenagers have felt anxiety at some point, but less than 20% seek professional help. Talking, sharing, and seeking guidance can make a big difference in your life.">
+        Más del 50% de los adolescentes han sentido ansiedad alguna vez...
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p data-es="Todos los derechos reservados. &copy; 2025 CAdo Interactivo." data-en="All rights reserved. &copy; 2025 CAdo Interactive.">Todos los derechos reservados. &copy; 2025 CAdo Interactivo.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    // Traducción dinámica
+    document.getElementById('translateBtn').addEventListener('click', () => {
+      const lang = document.documentElement.lang === 'es' ? 'en' : 'es';
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-es]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+
+      document.getElementById('translateBtn').textContent = lang === 'es' ? 'EN' : 'ES';
+      // También cambia el título
+      const pageTitle = document.querySelector('title');
+      if (pageTitle) pageTitle.textContent = pageTitle.getAttribute(`data-${lang}`);
+    });
+  </script>
+</body>
+</html>

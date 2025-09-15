@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-es="CAdo - Contactos" data-en="CAdo - Contacts">CAdo - Contactos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="imagenes/logo transparente.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    .equipo-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .equipo-section img {
+      width: 250px;
+      border-radius: 15px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .equipo-info {
+      flex: 1;
+      min-width: 250px;
+      max-width: 1000px;
+    }
+    .equipo-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .equipo-info p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      text-align: justify;
+      margin-right: 2rem;
+    }
+    @media (max-width: 768px) {
+      .equipo-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .equipo-section img {
+        width: 100%;
+        max-width: 300px;
+      }
+      .equipo-info h2 {
+        font-size: 1.5rem;
+      }
+      .equipo-info p {
+        font-size: 1rem;
+        text-align: center;
+        margin-right: 0;
+      }
+    }
+    .mensaje-bienvenida {
+      background-color: #f9f9f9;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 1.2rem;
+      max-width: 900px;
+      margin: 2rem auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+     /* Flip Card */
+  .flip-card {
+    background: transparent;
+    width: 250px;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .flip-card-back {
+    background: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+    text-align: center;
+    transform: rotateY(180deg);
+  }
+  /* Hover para PC */
+  @media (hover: hover) and (pointer: fine) {
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+  }
+  /* Estado flipped para móviles */
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 50px; /* debajo del header */
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .main-nav.visible {
+    display: flex;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <header class="fade-in">
+    <div class="container-header">
+      <div class="fila-logo">
+        <span id="logoTexto" class="logo-cado sentimientos">CAdo</span>
+        
+      </div>
+
+      <div class="fila-menu">
+      <button id="Contactos" class="hamburger">☰ Menú</button>
+      <button id="translateBtn" data-es="EN" data-en="ES">EN</button>
+    </div>
+
+      <nav class="main-nav">
+        <a href="index.html" class="sentimientos"><strong data-es="Inicio" data-en="Home">Inicio</strong></a>
+        <a href="adolecente.html" class="sentimientos"><strong data-es="Adolescentes" data-en="Adolescents">Adolescentes</strong></a>
+        <a href="preadolecentes.html" class="sentimientos"><strong data-es="Preadolescentes" data-en="Pre-teens">Preadolescentes</strong></a>
+        <a href="aDULTOS.HTML" class="sentimientos"><strong data-es="Adultos" data-en="Adults">Adultos</strong></a>
+        <a href="contactos.html" class="sentimientos"><strong data-es="Contactos" data-en="Contacts">Contactos</strong></a>
+     
+      </nav>
+    </div>
+  </header>
+
+  <main style="padding-top:100px;">
+    <div class="mensaje-bienvenida sentimientos" 
+         data-es="Somos como vos: vivimos, sentimos y aprendemos cada día. Queremos que sepas que podés hablarnos de todo, sin miedo y sin filtros. Con lo que vamos aprendiendo, buscamos que todos podamos entender mejor esta etapa y acompañarnos en el camino."
+         data-en="We are like you: we live, feel, and learn every day. We want you to know that you can talk to us about anything, without fear or filters. With what we are learning, we aim for everyone to better understand this stage and support each other along the way.">
+      Somos como vos: vivimos, sentimos y aprendemos cada día. Queremos que sepas que podés hablarnos de todo, sin miedo y sin filtros. Con lo que vamos aprendiendo, buscamos que todos podamos entender mejor esta etapa y acompañarnos en el camino.
+    </div>
+
+    <!-- Male -->
+  <section class="equipo-section" data-aos="fade-up">
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="imagenes integrantes/Male.jpg" alt="Male">
+      </div>
+      <div class="flip-card-back">
+        <h3 class="sentimientos" data-es="Male" data-en="Male">Male</h3>
+        <p class="sentimientos" data-es="Encargada de la información" data-en="Information Manager">Encargada de la información</p>
+      </div>
+    </div>
+  </div>
+  <div class="equipo-info">
+    <h2 class="sentimientos">Male</h2>
+    <p class="sentimientos" data-es="Soy Male, tengo 15 años y me encanta el arte en general pero especialmente la música y el piano, juego voley, soy muy curiosa y una fan de estudiar, aprender y divertirme. CAdo es el proyecto del que participo porque quiero seguir aprendiendo, compartiendo, acompañando y ayudando a chicas, chicos y adultos sobre una etapa tan importante como la adolescencia." 
+       data-en="I'm Male. I'm 15 years old and i love art in general, but especially music and the piano. I play volleyball. I´m very curious and fan of studying, learning, and having fun. CAdo is the project I'm involved in because I want to continue learning, sharing, supporting and helping girls, boys, and adults about such an important stage as adolescence.">
+      Soy Male, tengo 15 años y me encanta el arte en general pero especialmente la música y el piano, juego voley, soy muy curiosa y una fan de estudiar, aprender y divertirme. CAdo es el proyecto del que participo porque quiero seguir aprendiendo, compartiendo, acompañando y ayudando a chicas, chicos y adultos sobre una etapa tan importante como la adolescencia.
+    </p>
+  </div>
+</section>
+
+    <!-- Bianca -->
+ <section class="equipo-section" data-aos="fade-up" style="flex-direction:row-reverse;">
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="imagenes integrantes/Bian.jpg" alt="Bianca">
+      </div>
+      <div class="flip-card-back">
+        <h3 class="sentimientos" data-es="Bianca" data-en="Bianca">Bianca</h3>
+        <p class="sentimientos" 
+           data-es="Actividades con personas" 
+           data-en="Activities with people">Actividades con personas</p>
+      </div>
+    </div>
+  </div>
+      <div class="equipo-info">
+        <h2 class="sentimientos">Bianca</h2>
+        <p class="sentimientos" data-es="Soy Bianca, tengo 15 años. La música es mi refugio y el vóley mi forma de liberar energía y divertirme. Me encanta compartir mates, risas y charlas con mis amigos, porque sé que la adolescencia está llena de cambios, dudas y descubrimientos. Con el proyecto CAdo, quiero acompañar y ayudar a otros adolescentes y a sus padres a transitar esta etapa tan especial." 
+           data-en="I’m Bianca, I’m 15 years old. Music is my safe place, and volleyball is how I release energy and have fun. I love sharing mates, laughs, and deep talks with my friends, because I know adolescence is full of changes, questions, and discoveries. Through the CAdo project, I want to support and guide other teenagers and their parents as they navigate this special stage of life.">
+          Soy Bianca, tengo 15 años. La música es mi refugio y el vóley mi forma de liberar energía y divertirme. Me encanta compartir mates, risas y charlas con mis amigos, porque sé que la adolescencia está llena de cambios, dudas y descubrimientos. Con el proyecto CAdo, quiero acompañar y ayudar a otros adolescentes y a sus padres a transitar esta etapa tan especial.
+        </p>
+      </div>
+    </section>
+
+    <!-- Gastón -->
+   <section class="equipo-section" data-aos="fade-up">
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="imagenes integrantes/gaston.jpg" alt="Gastón">
+      </div>
+      <div class="flip-card-back">
+        <h3 class="sentimientos" data-es="Gastón" data-en="Gaston">Gastón</h3>
+        <p class="sentimientos" 
+           data-es="Creador de CAdo" 
+           data-en="Creator of CAdo">Creador de CAdo</p>
+      </div>
+    </div>
+  </div>
+      <div class="equipo-info">
+        <h2 class="sentimientos">Gastón</h2>
+        <p class="sentimientos" data-es="Soy Gastón, tengo 15 años, soy estudiante de música, toco violín y guitarra, me gusta aprender cosas nuevas y diferentes. Soy parte de la iglesia católica, voy a misa y a un grupo juvenil por otra parte soy parte de la comunidad LGBT+. Yo soy unos de los creadores de CAdo e inicie este proyecto con la idea de ayudar a los adolescentes, para que está etapa sea de cambio mas no de odio." 
+           data-en="I’m Gastón, I’m 15 years old, a music student, I play violin and guitar, and I like learning new and different things. I’m part of the Catholic Church, attend Mass and a youth group, and I’m also part of the LGBT+ community. I’m one of the creators of CAdo and started this project with the idea of helping teenagers so that this stage becomes a time of change, not hate.">
+          Soy Gastón, tengo 15 años, soy estudiante de música, toco violín y guitarra, me gusta aprender cosas nuevas y diferentes. Soy parte de la iglesia católica, voy a misa y a un grupo juvenil por otra parte soy parte de la comunidad LGBT+. Yo soy unos de los creadores de CAdo e inicie este proyecto con la idea de ayudar a los adolescentes, para que está etapa sea de cambio mas no de odio.
+        </p>
+      </div>
+    </section>
+
+    <!-- Guada -->
+ <section class="equipo-section" data-aos="fade-up" style="flex-direction:row-reverse;">
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="imagenes integrantes/Guadi.jpg" alt="Guada">
+      </div>
+      <div class="flip-card-back">
+        <h3 class="sentimientos" data-es="Guada" data-en="Guada">Guada</h3>
+        <p class="sentimientos" 
+           data-es="Marketing y diseño" 
+           data-en="Marketing and Design">Marketing y diseño</p>
+      </div>
+    </div>
+  </div>
+      <div class="equipo-info">
+        <h2 class="sentimientos">Guada</h2>
+        <p class="sentimientos" data-es="Hola, Soy Guada y tengo 15 años. Amo diseñar cosas, me encanta la música, bailar y amo a Spiderman. Me río de todo, y amo ser optimista, ayudar a los demás, dar consejos y soy buena escuchando. Me uní a CAdo principalmente para ayudar con el diseño, pero luego la idea de poner mi granito de arena en algo que puede ayudar a los demás y que les puede hacer saber que están acompañados, me llena de felicidad. Ojalá en esta página puedas encontrar algunas respuestas a tus dudas y te sientas muy cómodo." 
+           data-en="Hi, I’m Guada and I’m 15 years old. I love designing things, music, dancing, and I love Spiderman. I laugh at everything, and I love being optimistic, helping others, giving advice, and I’m a good listener. I joined CAdo mainly to help with the design, but then the idea of contributing to something that can help others and let them know they’re not alone fills me with happiness. I hope you can find some answers to your questions here and feel very comfortable.">
+          Hola, Soy Guada y tengo 15 años. Amo diseñar cosas, me encanta la música, bailar y amo a Spiderman. Me río de todo, y amo ser optimista, ayudar a los demás, dar consejos y soy buena escuchando. Me uní a CAdo principalmente para ayudar con el diseño, pero luego la idea de poner mi granito de arena en algo que puede ayudar a los demás y que les puede hacer saber que están acompañados, me llena de felicidad. Ojalá en esta página puedas encontrar algunas respuestas a tus dudas y te sientas muy cómodo.
+        </p>
+      </div>
+    </section>
+
+    <!-- Lautaro -->
+<section class="equipo-section" data-aos="fade-up">
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="imagenes integrantes/El mejor der todos Yo.jpg" alt="Lautaro">
+      </div>
+      <div class="flip-card-back">
+        <h3 class="sentimientos" data-es="Lautaro" data-en="Lautaro">Lautaro</h3>
+        <p class="sentimientos" 
+           data-es="Programador" 
+           data-en="Programmer">Programador</p>
+      </div>
+    </div>
+  </div>
+      <div class="equipo-info">
+        <h2 class="sentimientos">Lautaro</h2>
+        <p class="sentimientos" data-es="Soy Lautaro, tengo 16 años, soy catequista, toco la guitarra, me gusta escuchar música, me gustan los perros, programar, hacer reír y siempre empezar mi día con una sonrisa. CAdo es el proyecto del que participo porque creo que, con cada línea de código y cada momento compartido, podemos crear puentes para entendernos mejor. Quiero que quienes pasen por esta etapa sepan que no están solos, que siempre hay alguien dispuesto a escucharlos y a caminar junto a ellos mientras descubren quiénes son." 
+           data-en="I’m Lautaro, I’m 16 years old, a catechist, I play the guitar, I like listening to music, I love dogs, programming, making people laugh, and always starting my day with a smile. CAdo is the project I’m part of because I believe that, with each line of code and each shared moment, we can build bridges to better understand each other. I want those going through this stage to know they are not alone, that there will always be someone willing to listen and walk with them as they discover who they are.">
+          Soy Lautaro, tengo 16 años, soy catequista, toco la guitarra, me gusta escuchar música, me gustan los perros, programar, hacer reír y siempre empezar mi día con una sonrisa. CAdo es el proyecto del que participo porque creo que, con cada línea de código y cada momento compartido, podemos crear puentes para entendernos mejor. Quiero que quienes pasen por esta etapa sepan que no están solos, que siempre hay alguien dispuesto a escucharlos y a caminar junto a ellos mientras descubren quiénes son.
+        </p>
+      </div>
+    </section>
+
+    <!-- Encuesta -->
+    <section id="consultas" style="padding:4rem 1rem; background:#f9f9f9;">
+      <h2 class="section-title sentimientos" data-es="Centro de Consultas" data-en="Consultation Center">Centro de Consultas</h2>
+      <form class="formulario" onsubmit="mostrarConfirmacion(event)">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+
+        <label>Con quién querés hablar:</label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="persona" value="Guada" required> Guada
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="persona" value="Bianca"> Bianca
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="persona" value="Gaston"> Gaston
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="persona" value="Lautaro"> Lautaro
+          </label>
+             <label class="radio-item">
+            <input type="radio" name="persona" value="Male"> Male
+          </label>
+        </div>
+
+        <input type="submit" class="sentimientos" value="Enviar consulta">
+      </form>
+      <div id="confirmacion"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="sentimientos" data-es="© CAdo 2025 - Todos los derechos reservados." data-en="© CAdo 2025 - All rights reserved.">© CAdo 2025 - Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script src="java.js"></script>
+  <script>AOS.init();</script>
+  <script>
+ 
+
+  // Flip en móviles con toque
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => {
+      // Solo para pantallas táctiles
+      if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
+        card.classList.toggle('flipped');
+      }
+    });
+  });
+
+
+        const menuBtn = document.getElementById('Contactos');
+    const nav = document.querySelector('nav.main-nav');
+    menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+ 
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => nav.classList.remove('visible'));
+  });
+
+
+
+
+
+</script>
+</body>
+</html>

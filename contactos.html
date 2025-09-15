@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-es="CAdo - Contactos" data-en="CAdo - Contacts">CAdo - Contactos</title>
+  <meta name="description" content="Conoce al equipo de CAdo - Adolescentes ayudando a adolescentes en su desarrollo emocional y social">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="shortcut icon" href="img/logos/logo transparente.png" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #306acb;
+      --secondary-color: #4a90ff;
+      --accent-color: #f0f9ff;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --danger-color: #ef4444;
+      --border-radius: 12px;
+      --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+      --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.15);
+      --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.2);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Header styles */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-cado {
+      font-size: 2rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: rgb(9, 107, 255);
+    }
+
+    .nav-section {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .main-nav a {
+         background-color: #005ebb;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+    }
+
+    .main-nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .hamburger {
+      display: none;
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .hamburger:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Welcome message */
+    .welcome-message {
+      background: linear-gradient(135deg, var(--accent-color), #e0f2fe);
+      border: 2px solid #bae6fd;
+      border-radius: var(--border-radius);
+      padding: 2.5rem;
+      margin: 3rem auto;
+      max-width: 900px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #0369a1;
+      box-shadow: var(--shadow-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .welcome-message::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: rotate(45deg);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    /* Team sections */
+    .team-section {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin: 4rem auto;
+      max-width: 1200px;
+      padding: 2rem;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+    }
+
+    .team-section:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .team-section.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .flip-card {
+      width: 280px;
+      height: 320px;
+      perspective: 1000px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner,
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+    }
+
+    .flip-card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .flip-card-back {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+      text-align: center;
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-back h3 {
+      font-size: 1.5rem;
+      margin: 0 0 1rem 0;
+      font-weight: 700;
+    }
+
+    .flip-card-back p {
+      font-size: 1rem;
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .team-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .team-info h2 {
+      font-size: 2rem;
+      margin: 0 0 1.5rem 0;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    .team-info p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: justify;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    /* Consultation form */
+    .consultation-section {
+      background: white;
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin: 0 0 3rem 0;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+
+    .consultation-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .form-group input {
+      padding: 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(48, 106, 203, 0.1);
+    }
+
+    .radio-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .radio-item:hover {
+      border-color: var(--primary-color);
+      background: var(--accent-color);
+    }
+
+    .radio-item input[type="radio"] {
+      margin: 0;
+      accent-color: var(--primary-color);
+    }
+
+    .radio-item input[type="radio"]:checked + span {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      padding: 1.2rem 2rem;
+      border-radius: var(--border-radius);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .confirmation-message {
+      background: var(--success-color);
+      color: white;
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 500;
+      display: none;
+    }
+
+   
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary-color);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: var(--shadow-medium);
+      }
+
+      .main-nav.visible {
+        display: flex;
+      }
+
+      .team-section,
+      .team-section.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 1.5rem;
+      }
+
+      .flip-card {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .team-info p {
+        text-align: center;
+      }
+
+      .radio-group {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .consultation-section {
+        padding: 2rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .welcome-message {
+        font-size: 1rem;
+        padding: 2rem;
+        margin: 2rem 1rem;
+      }
+
+      .team-info h2 {
+        font-size: 1.5rem;
+      }
+
+      .team-info p {
+        font-size: 1rem;
+      }
+    }
+
+    /* Accessibility improvements */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Focus styles */
+    button:focus,
+    input:focus,
+    .radio-item:focus-within {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    /* Loading states */
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    .loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid transparent;
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo-section">
+        <a href="index.html" class="logo-cado">CAdo</a>
+      </div>
+      
+      <nav class="nav-section">
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i> Menú
+        </button>
+        
+        <div class="main-nav" id="mainNav">
+          <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+          <a href="adolescente.html" data-es="Adolescentes" data-en="Adolescents">Adolescentes</a>
+          <a href="preadolescente.html" data-es="Preadolescentes" data-en="Pre-teens">Preadolescentes</a>
+          <a href="adultos.html" data-es="Adultos" data-en="Adults">Adultos</a>
+          <a href="contactos.html" class="current" data-es="Contactos" data-en="Contacts">Contactos</a>
+          <button id="translateBtn" data-es="EN" data-en="ES">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main style="padding-top: 100px;">
+    <div class="container">
+      <div class="welcome-message" data-aos="fade-up">
+        <p data-es="Somos como vos: vivimos, sentimos y aprendemos cada día. Queremos que sepas que podés hablarnos de todo, sin miedo y sin filtros. Con lo que vamos aprendiendo, buscamos que todos podamos entender mejor esta etapa y acompañarnos en el camino."
+           data-en="We are like you: we live, feel, and learn every day. We want you to know that you can talk to us about anything, without fear or filters. With what we are learning, we aim for everyone to better understand this stage and support each other along the way.">
+          Somos como vos: vivimos, sentimos y aprendemos cada día. Queremos que sepas que podés hablarnos de todo, sin miedo y sin filtros. Con lo que vamos aprendiendo, buscamos que todos podamos entender mejor esta etapa y acompañarnos en el camino.
+        </p>
+      </div>
+
+      <!-- Male -->
+      <section class="team-section" data-aos="fade-up">
+        <div class="flip-card" tabindex="0" role="button" aria-label="Ver información de Male">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="img/integrantes/Male.jpg" alt="Foto de Male" loading="lazy">
+            </div>
+            <div class="flip-card-back">
+              <h3>Male</h3>
+              <p data-es="Encargada de la información" data-en="Information Manager">Encargada de la información</p>
+            </div>
+          </div>
+        </div>
+        <div class="team-info">
+          <h2>Male</h2>
+          <p data-es="Soy Male, tengo 15 años y me encanta el arte en general pero especialmente la música y el piano, juego voley, soy muy curiosa y una fan de estudiar, aprender y divertirme. CAdo es el proyecto del que participo porque quiero seguir aprendiendo, compartiendo, acompañando y ayudando a chicas, chicos y adultos sobre una etapa tan importante como la adolescencia."
+             data-en="I'm Male. I'm 15 years old and I love art in general, but especially music and the piano. I play volleyball. I'm very curious and a fan of studying, learning, and having fun. CAdo is the project I'm involved in because I want to continue learning, sharing, supporting and helping girls, boys, and adults about such an important stage as adolescence.">
+            Soy Male, tengo 15 años y me encanta el arte en general pero especialmente la música y el piano, juego voley, soy muy curiosa y una fan de estudiar, aprender y divertirme. CAdo es el proyecto del que participo porque quiero seguir aprendiendo, compartiendo, acompañando y ayudando a chicas, chicos y adultos sobre una etapa tan importante como la adolescencia.
+          </p>
+        </div>
+      </section>
+
+      <!-- Bianca -->
+      <section class="team-section reverse" data-aos="fade-up">
+        <div class="flip-card" tabindex="0" role="button" aria-label="Ver información de Bianca">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="img/integrantes/Bian.jpg" alt="Foto de Bianca" loading="lazy">
+            </div>
+            <div class="flip-card-back">
+              <h3>Bianca</h3>
+              <p data-es="Actividades con personas" data-en="Activities with people">Actividades con personas</p>
+            </div>
+          </div>
+        </div>
+        <div class="team-info">
+          <h2>Bianca</h2>
+          <p data-es="Soy Bianca, tengo 15 años. La música es mi refugio y el vóley mi forma de liberar energía y divertirme. Me encanta compartir mates, risas y charlas con mis amigos, porque sé que la adolescencia está llena de cambios, dudas y descubrimientos. Con el proyecto CAdo, quiero acompañar y ayudar a otros adolescentes y a sus padres a transitar esta etapa tan especial."
+             data-en="I'm Bianca, I'm 15 years old. Music is my safe place, and volleyball is how I release energy and have fun. I love sharing mates, laughs, and deep talks with my friends, because I know adolescence is full of changes, questions, and discoveries. Through the CAdo project, I want to support and guide other teenagers and their parents as they navigate this special stage of life.">
+            Soy Bianca, tengo 15 años. La música es mi refugio y el vóley mi forma de liberar energía y divertirme. Me encanta compartir mates, risas y charlas con mis amigos, porque sé que la adolescencia está llena de cambios, dudas y descubrimientos. Con el proyecto CAdo, quiero acompañar y ayudar a otros adolescentes y a sus padres a transitar esta etapa tan especial.
+          </p>
+        </div>
+      </section>
+
+      <!-- Gastón -->
+      <section class="team-section" data-aos="fade-up">
+        <div class="flip-card" tabindex="0" role="button" aria-label="Ver información de Gastón">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="img/integrantes/gaston.jpg" alt="Foto de Gastón" loading="lazy">
+            </div>
+            <div class="flip-card-back">
+              <h3>Gastón</h3>
+              <p data-es="Creador de CAdo" data-en="Creator of CAdo">Creador de CAdo</p>
+            </div>
+          </div>
+        </div>
+        <div class="team-info">
+          <h2>Gastón</h2>
+          <p data-es="Soy Gastón, tengo 15 años, soy estudiante de música, toco violín y guitarra, me gusta aprender cosas nuevas y diferentes. Soy parte de la iglesia católica, voy a misa y a un grupo juvenil por otra parte soy parte de la comunidad LGBT+. Yo soy unos de los creadores de CAdo e inicie este proyecto con la idea de ayudar a los adolescentes, para que está etapa sea de cambio mas no de odio."
+             data-en="I'm Gastón, I'm 15 years old, a music student, I play violin and guitar, and I like learning new and different things. I'm part of the Catholic Church, attend Mass and a youth group, and I'm also part of the LGBT+ community. I'm one of the creators of CAdo and started this project with the idea of helping teenagers so that this stage becomes a time of change, not hate.">
+            Soy Gastón, tengo 15 años, soy estudiante de música, toco violín y guitarra, me gusta aprender cosas nuevas y diferentes. Soy parte de la iglesia católica, voy a misa y a un grupo juvenil por otra parte soy parte de la comunidad LGBT+. Yo soy unos de los creadores de CAdo e inicie este proyecto con la idea de ayudar a los adolescentes, para que está etapa sea de cambio mas no de odio.
+          </p>
+        </div>
+      </section>
+
+      <!-- Guada -->
+      <section class="team-section reverse" data-aos="fade-up">
+        <div class="flip-card" tabindex="0" role="button" aria-label="Ver información de Guada">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="img/integrantes/Guadi.jpg" alt="Foto de Guada" loading="lazy">
+            </div>
+            <div class="flip-card-back">
+              <h3>Guada</h3>
+              <p data-es="Marketing y diseño" data-en="Marketing and Design">Marketing y diseño</p>
+            </div>
+          </div>
+        </div>
+        <div class="team-info">
+          <h2>Guada</h2>
+          <p data-es="Hola, Soy Guada y tengo 15 años. Amo diseñar cosas, me encanta la música, bailar y amo a Spiderman. Me río de todo, y amo ser optimista, ayudar a los demás, dar consejos y soy buena escuchando. Me uní a CAdo principalmente para ayudar con el diseño, pero luego la idea de poner mi granito de arena en algo que puede ayudar a los demás y que les puede hacer saber que están acompañados, me llena de felicidad. Ojalá en esta página puedas encontrar algunas respuestas a tus dudas y te sientas muy cómodo."
+             data-en="Hi, I'm Guada and I'm 15 years old. I love designing things, music, dancing, and I love Spiderman. I laugh at everything, and I love being optimistic, helping others, giving advice, and I'm a good listener. I joined CAdo mainly to help with the design, but then the idea of contributing to something that can help others and let them know they're not alone fills me with happiness. I hope you can find some answers to your questions here and feel very comfortable.">
+            Hola, Soy Guada y tengo 15 años. Amo diseñar cosas, me encanta la música, bailar y amo a Spiderman. Me río de todo, y amo ser optimista, ayudar a los demás, dar consejos y soy buena escuchando. Me uní a CAdo principalmente para ayudar con el diseño, pero luego la idea de poner mi granito de arena en algo que puede ayudar a los demás y que les puede hacer saber que están acompañados, me llena de felicidad. Ojalá en esta página puedas encontrar algunas respuestas a tus dudas y te sientas muy cómodo.
+          </p>
+        </div>
+      </section>
+
+      <!-- Lautaro -->
+      <section class="team-section" data-aos="fade-up">
+        <div class="flip-card" tabindex="0" role="button" aria-label="Ver información de Lautaro">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="img/integrantes/El mejor der todos Yo.jpg" alt="Foto de Lautaro" loading="lazy">
+            </div>
+            <div class="flip-card-back">
+              <h3>Lautaro</h3>
+              <p data-es="Programador" data-en="Programmer">Programador</p>
+            </div>
+          </div>
+        </div>
+        <div class="team-info">
+          <h2>Lautaro</h2>
+          <p data-es="Soy Lautaro, tengo 16 años, soy catequista, toco la guitarra, me gusta escuchar música, me gustan los perros, programar, hacer reír y siempre empezar mi día con una sonrisa. CAdo es el proyecto del que participo porque creo que, con cada línea de código y cada momento compartido, podemos crear puentes para entendernos mejor. Quiero que quienes pasen por esta etapa sepan que no están solos, que siempre hay alguien dispuesto a escucharlos y a caminar junto a ellos mientras descubren quiénes son."
+             data-en="I'm Lautaro, I'm 16 years old, a catechist, I play the guitar, I like listening to music, I love dogs, programming, making people laugh, and always starting my day with a smile. CAdo is the project I'm part of because I believe that, with each line of code and each shared moment, we can build bridges to better understand each other. I want those going through this stage to know they are not alone, that there will always be someone willing to listen and walk with them as they discover who they are.">
+            Soy Lautaro, tengo 16 años, soy catequista, toco la guitarra, me gusta escuchar música, me gustan los perros, programar, hacer reír y siempre empezar mi día con una sonrisa. CAdo es el proyecto del que participo porque creo que, con cada línea de código y cada momento compartido, podemos crear puentes para entendernos mejor. Quiero que quienes pasen por esta etapa sepan que no están solos, que siempre hay alguien dispuesto a escucharlos y a caminar junto a ellos mientras descubren quiénes son.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Consultation Section -->
+    <section class="consultation-section" data-aos="fade-up">
+      <div class="container">
+        <h2 class="section-title" data-es="Centro de Consultas" data-en="Consultation Center">Centro de Consultas</h2>
+        
+        <form class="consultation-form" id="consultationForm">
+          <div class="form-group">
+            <label for="nombre">
+              <span data-es="Nombre:" data-en="Name:">Nombre:</span>
+            </label>
+            <input type="text" id="nombre" name="nombre" 
+                   placeholder="Tu nombre" 
+                   required 
+                   minlength="2"
+                   maxlength="50"
+                   aria-describedby="nombre-help">
+            <small id="nombre-help" class="sr-only">Ingresa tu nombre completo</small>
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">
+              <span data-es="Apellido:" data-en="Last Name:">Apellido:</span>
+            </label>
+            <input type="text" id="apellido" name="apellido" 
+                   placeholder="Tu apellido" 
+                   required 
+                   minlength="2"
+                   maxlength="50"
+                   aria-describedby="apellido-help">
+            <small id="apellido-help" class="sr-only">Ingresa tu apellido</small>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <span data-es="Con quién querés hablar:" data-en="Who would you like to talk to:">Con quién querés hablar:</span>
+            </label>
+            <div class="radio-group" role="radiogroup" aria-required="true">
+              <label class="radio-item">
+                <input type="radio" name="persona" value="Male" required>
+                <span>Male</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="persona" value="Bianca">
+                <span>Bianca</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="persona" value="Gaston">
+                <span>Gastón</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="persona" value="Lautaro">
+                <span>Lautaro</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="persona" value="Guada">
+                <span>Guada</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">
+              <span data-es="Tu mensaje (opcional):" data-en="Your message (optional):">Tu mensaje (opcional):</span>
+            </label>
+            <textarea id="mensaje" name="mensaje" 
+                      placeholder="Cuéntanos qué te gustaría hablar..."
+                      rows="4"
+                      maxlength="500"
+                      aria-describedby="mensaje-help"></textarea>
+            <small id="mensaje-help" class="form-help">Máximo 500 caracteres</small>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text" data-es="Enviar consulta" data-en="Send consultation">Enviar consulta</span>
+            <span class="btn-loading" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i> Enviando...
+            </span>
+          </button>
+        </form>
+
+        <div id="confirmationMessage" class="confirmation-message" role="alert" aria-live="polite">
+          <!-- Confirmation message will be inserted here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chat Toggle Button -->
+  <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat de ayuda">
+    <i class="fas fa-comments"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p data-es="© CAdo 2025 - Todos los derechos reservados." data-en="© CAdo 2025 - All rights reserved.">
+        © CAdo 2025 - Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+  
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      offset: 100,
+      once: true
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('visible');
+      const isVisible = mainNav.classList.contains('visible');
+      menuToggle.setAttribute('aria-expanded', isVisible);
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !mainNav.contains(e.target)) {
+        mainNav.classList.remove('visible');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Flip cards interaction for mobile
+    const flipCards = document.querySelectorAll('.flip-card');
+    flipCards.forEach(card => {
+      card.addEventListener('click', () => {
+        if (window.matchMedia("(hover: none)").matches) {
+          card.classList.toggle('flipped');
+        }
+      });
+
+      // Keyboard support
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.classList.toggle('flipped');
+        }
+      });
+    });
+
+    // WhatsApp numbers mapping
+    const whatsappNumbers = {
+      "Guada": "5492304309043",
+      "Bianca": "5491122842085",
+      "Gaston": "5491159625690",
+      "Lautaro": "5491126544906",
+      "Male": "5491162165178"
+    };
+
+    // Form handling with WhatsApp integration
+    const consultationForm = document.getElementById('consultationForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    consultationForm.addEventListener('submit', function(event) {
+      mostrarConfirmacion(event);
+    });
+
+    function mostrarConfirmacion(event) {
+      event.preventDefault();
+      
+      // Show loading state
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      submitBtn.querySelector('.btn-text').style.display = 'none';
+      submitBtn.querySelector('.btn-loading').style.display = 'inline-flex';
+      
+      // Get form data
+      const nombre = document.getElementById("nombre").value;
+      const apellido = document.getElementById("apellido").value;
+      const personaSelected = document.querySelector('input[name="persona"]:checked');
+      
+      if (!personaSelected) {
+        showError("Por favor selecciona con quién quieres hablar");
+        resetButtonState();
+        return;
+      }
+      
+      const persona = personaSelected.value;
+      const numeroWhatsApp = whatsappNumbers[persona];
+      
+      // Show success message
+      const mensaje = `✅ Hola ${nombre} ${apellido}, tu mensaje fue recibido por CAdo. Te contactará ${persona}.`;
+      
+      confirmationMessage.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <i class="fas fa-check-circle" style="font-size: 1.2em;"></i>
+          <div>
+            <strong>¡Consulta enviada exitosamente!</strong><br>
+            ${mensaje}
+            <br><br>
+            <small>Se abrirá WhatsApp para continuar la conversación...</small>
+          </div>
+        </div>
+      `;
+      confirmationMessage.style.display = 'block';
+      confirmationMessage.style.background = 'var(--success-color)';
+      
+      // Create WhatsApp message
+      const texto = `Hola acabo de completar el formulario de consulta de CAdo y me gustaria mucho que me brindes mas informacion , *Mi nombre es ${nombre} ${apellido}.*`;
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+      
+      // Small delay before opening WhatsApp
+      setTimeout(() => {
+        window.open(url, '_blank');
+        
+        // Reset form after successful submission
+        consultationForm.reset();
+        
+        // Hide confirmation after 10 seconds
+        setTimeout(() => {
+          confirmationMessage.style.display = 'none';
+        }, 10000);
+        
+        resetButtonState();
+      }, 1500);
+
+      // Scroll to confirmation
+      confirmationMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function resetButtonState() {
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      submitBtn.querySelector('.btn-text').style.display = 'inline';
+      submitBtn.querySelector('.btn-loading').style.display = 'none';
+    }
+
+    function showConfirmation(data) {
+      // This function is kept for compatibility but main logic moved to mostrarConfirmacion
+      mostrarConfirmacion({ preventDefault: () => {} });
+    }
+
+    function showError() {
+      confirmationMessage.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <i class="fas fa-exclamation-triangle" style="font-size: 1.2em;"></i>
+          <div>
+            <strong>Error al enviar</strong><br>
+            Hubo un problema al enviar tu consulta. Por favor intenta nuevamente.
+          </div>
+        </div>
+      `;
+      confirmationMessage.style.display = 'block';
+      confirmationMessage.style.background = 'var(--danger-color)';
+      
+      setTimeout(() => {
+        confirmationMessage.style.display = 'none';
+      }, 5000);
+    }
+
+    // Character counter for textarea
+    const messageTextarea = document.getElementById('mensaje');
+    const messageHelp = document.getElementById('mensaje-help');
+    
+    if (messageTextarea && messageHelp) {
+      messageTextarea.addEventListener('input', () => {
+        const remaining = 500 - messageTextarea.value.length;
+        messageHelp.textContent = `${remaining} caracteres restantes`;
+        
+        if (remaining < 50) {
+          messageHelp.style.color = 'var(--warning-color)';
+        } else if (remaining < 20) {
+          messageHelp.style.color = 'var(--danger-color)';
+        } else {
+          messageHelp.style.color = 'var(--text-light)';
+        }
+      });
+    }
+
+    // Language toggle functionality
+    const translateBtn = document.getElementById('translateBtn');
+    let currentLang = 'es';
+    
+    translateBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      translateBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
+      
+      // Update all translatable elements
+      const translatableElements = document.querySelectorAll('[data-es][data-en]');
+      translatableElements.forEach(element => {
+        const text = element.getAttribute(`data-${currentLang}`);
+        if (text) {
+          if (element.tagName === 'INPUT' && element.type !== 'submit') {
+            element.placeholder = text;
+          } else {
+            element.textContent = text;
+          }
+        }
+      });
+      
+      // Update page title
+      document.title = currentLang === 'es' ? 'CAdo - Contactos' : 'CAdo - Contacts';
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Basic chat functionality
+    const chatToggle = document.getElementById('chatToggle');
+    chatToggle.addEventListener('click', () => {
+      // This would open your existing chat widget
+      alert('Chat functionality would be integrated here with your existing chat system');
+    });
+
+    // Form validation enhancements
+    const inputs = document.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('blur', validateField);
+      input.addEventListener('input', clearErrors);
+    });
+
+    function validateField(e) {
+      const field = e.target;
+      const value = field.value.trim();
+      
+      // Remove existing error styling
+      field.classList.remove('error');
+      
+      // Basic validation
+      if (field.required && !value) {
+        showFieldError(field, 'Este campo es requerido');
+        return false;
+      }
+      
+      if (field.type === 'text' && value.length < 2) {
+        showFieldError(field, 'Mínimo 2 caracteres');
+        return false;
+      }
+      
+      return true;
+    }
+
+    function showFieldError(field, message) {
+      field.classList.add('error');
+      
+      // Add error styling
+      if (!document.querySelector('.error-styles')) {
+        const style = document.createElement('style');
+        style.className = 'error-styles';
+        style.textContent = `
+          .form-group input.error,
+          .form-group textarea.error {
+            border-color: var(--danger-color) !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    }
+
+    function clearErrors(e) {
+      e.target.classList.remove('error');
+    }
+
+    // Improved accessibility
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+      radio.addEventListener('change', () => {
+        // Announce selection for screen readers
+        const selection = radio.value;
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.className = 'sr-only';
+        announcement.textContent = `Seleccionado: ${selection}`;
+        document.body.appendChild(announcement);
+        
+        setTimeout(() => {
+          document.body.removeChild(announcement);
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>

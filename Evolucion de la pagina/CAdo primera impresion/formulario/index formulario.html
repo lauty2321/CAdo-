@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario con Confirmación</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script defer src="funciones.js"></script>
+</head>
+<body>
+
+  <h2>Formulario de Consultas</h2>
+
+  <form class="formulario" onsubmit="mostrarConfirmacion(event)">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+
+    <label>Género:</label>
+    <div class="radio-group">
+      <label class="radio-item">
+        <input type="radio" name="genero" value="Masculino" required>
+        Masculino
+      </label>
+
+      <label class="radio-item">
+        <input type="radio" name="genero" value="Femenino">
+        Femenino
+      </label>
+
+      <label class="radio-item">
+        <input type="radio" name="genero" value="Otro">
+        Otro
+      </label>
+    </div>
+
+    <input type="submit" value="Enviar">
+  </form>
+
+  <!-- Sección de confirmación -->
+  <div id="confirmacion"></div>
+
+</body>
+</html>
+  

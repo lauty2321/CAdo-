@@ -1,0 +1,84 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: system-ui, Arial, sans-serif; }
+
+body {
+  background: url('cado.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Animación intro */
+.title {
+  font-weight: 800;
+  font-size: clamp(28px, 6vw, 56px);
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 1.2;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+.title .char {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(3px);
+  display: inline-block;
+  animation: rise .6s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.title .space { width: .4ch; }
+
+@keyframes rise {
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.question, .choices { opacity: 0; transform: translateY(10px); }
+.show { animation: fadeInUp .6s ease forwards; }
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.choices {
+  display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  margin-top: 20px;
+}
+.pill {
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-size: clamp(14px, 2.5vw, 18px);
+  font-weight: 700;
+  background: white; color: #111;
+  cursor: pointer; border: none;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.pill:hover { transform: translateY(-2px) scale(1.04); }
+.pill:active { transform: translateY(0) scale(0.98); }
+
+/* Estilos comunes páginas secundarias */
+.container {
+  max-width: 700px;
+  padding: 20px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 16px;
+}
+h1 { font-size: clamp(26px, 6vw, 44px); margin-bottom: 20px; }
+p { font-size: clamp(16px, 2.5vw, 20px); line-height: 1.5; margin-bottom: 20px; }
+a.back {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: white;
+  color: #111;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  transition: transform .15s ease;
+}
+a.back:hover { transform: scale(1.05); }

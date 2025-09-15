@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title data-es="CAdo Crecimiento Adolescente" data-en="CAdo Adolescent Growth">CAdo Crecimiento Adolescente</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+<link rel="shortcut icon" href="imagenes/logo transparente.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="particles-js"></div>
+
+
+  <header class="fade-in">
+    <div class="container">
+      <div class="logo" data-es="CAdo" data-en="CAdo">
+       <img src="imagenes/logo transparente.png" alt="logo">
+        <span>CAdo</span>
+     </div>
+       <nav>
+         <a href="#somosCAdo" data-es="Quienes Somos" data-en="Who We Are">Quienes Somos</a>
+         <a href="#nuestrosObjetivos" data-es="Nuestra ayuda" data-en="Our Help">Nuestra ayuda</a>
+         <a href="#caracteristicas" data-es="Contactos" data-en="Contacts">Contactos</a>
+       </nav>
+      <button id="translateBtn">EN</button>
+    </div>
+  </header>
+
+  <section id="hero" class="fade-in" style="height:80vh;">
+    <h1  class="float" data-es="Aprende de la adolescencia con CAdo" data-en="Learn from the stages of life with CAdo">Aprendé de las etapas de la vida con CAdo</h1>
+    <button onclick="mostrarModal()" class="zoom-effect" data-es="Conoce Más" data-en="Learn More">Conoce Mas</button>
+  </section>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content zoom-effect">
+      <h3 id="modalTitle" data-es="¡Hola! Gracias por tu interés" data-en="Hi! Thanks for your interest">¡Hola! Gracias por tu interés</h3>
+      <p data-es="CAdo es un programa dedicado al desarrollo y bienestar de los adolescentes. ¡Súmate y crezcamos juntos!"
+         data-en="CAdo is a program dedicated to the development and well-being of adolescents. Join us and let's grow together!">
+        CAdo es un programa dedicado al desarrollo y bienestar de los adolescentes. ¡Súmate y crezcamos juntos!
+      </p>
+      <button class="close-btn zoom-effect" onclick="cerrarModal()" data-es="Cerrar" data-en="Close">Cerrar</button>
+    </div>
+  </div>
+
+  <section id="somosCAdo" class="fade-in">
+    <h2 class="section-title float" data-es="Somos CAdo" data-en="We are CAdo">Somos CAdo</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2rem;">
+      <img src="imagenes/logo transparente.png" alt="Logo" style="max-width: 250px; width: 100%;" data-aos="fade-right" class="zoom-effect">
+      <p style="max-width: 600px; text-align: center;" data-aos="fade-left" class="zoom-effect"
+         data-es="Un proyecto que busca asistir no solo a los adolescentes, sino también a los pre-adolescentes y adultos para que puedan ayudar y aprender sobre lo que es la adolescencia con sus cambios. Buscamos que la adolescencia no sea una etapa de separación y odio, sino una etapa de cambio para todos."
+         data-en="A project that aims to help not only teenagers but also pre-teens and adults, so they can learn about adolescence and its changes. We seek for adolescence not to be a phase of separation or hatred, but rather a phase of change for everyone.">
+        Un proyecto que busca asistir no solo a los adolescentes, sino también a los pre-adolescentes y adultos para que puedan ayudar y aprender sobre lo que es la adolescencia con sus cambios. Buscamos que la adolescencia no sea una etapa de separación y odio, sino una etapa de cambio para todos.
+      </p>
+    </div>
+  </section>
+
+  <section id="nuestrosObjetivos" style="background: #202020; color: white;">
+    <h2 class="section-title" data-es="Nuestra Ayuda" data-en="Our Help">Nuestra Ayuda</h2>
+    <div class="programas">
+      <!-- Preadolescentes -->
+      <div class="carta" data-aos="flip-left">
+        <img src="imagnes/osodepeluche.jpg" alt="Preadolescente" style="width:100%; height:250px; object-fit:cover; border-radius:10px;" />
+        <h3 data-es="Preadolescente" data-en="Pre-teen">Preadolescente</h3>
+        <p data-es="De 9 a 13 años
+¿Que cambios tendre? ¿En que momento? ¿Que me sucedera? Estas entre otras preguntas son de las más comunes en esta edad, en esta carta intentaremos responder estas y otras preguntas."
+           data-en="From 9 to 13 years old What changes will I have? When will it happen? What will happen to me? These, among other questions, are some of the most common at this age. In this letter, we will try to answer these and other questions.">
+          De 9 a 13 años
+¿Que cambios tendre? ¿En que momento? ¿Que me sucedera? Estas entre otras preguntas son de las más comunes en esta edad, en esta carta intentaremos responder estas y otras preguntas.
+        </p>
+        <a href="preadolecentes.html"><button data-es="+ Info" data-en="+ Info">+ Info</button></a>
+      </div>
+
+      <!-- Adolescentes -->
+      <div class="carta" data-aos="flip-up">
+        <img src="imagnes/charlaado.jpg" alt="Adolescentes conversando" style="width:100%; height:250px; object-fit:cover; border-radius:10px;" />
+        <h3 data-es="Adolescentes" data-en="Adolescents">Adolescentes</h3>
+        <p data-es="De 13 a 21 años
+¿Que me pasa? ¿Por que soy asi? ¿Quien soy? Son preguntas frecuentes, no podemos darte respuestas claras pero podemos darte una guia de lo que podrias hacer para entender y ayudarte."
+           data-en="From 13 to 21 years oldWhat is happening to me? Why am I like this? Who am I? These are common questions, we can't give you clear answers, but we can provide you with a guide on what you could do to understand yourself and help yourself.">
+          De 13 a 21 años
+¿Que me pasa? ¿Por que soy asi? ¿Quien soy? Son preguntas frecuentes, no podemos darte respuestas claras pero podemos darte una guia de lo que podrias hacer para entender y ayudarte.
+        </p>
+        <a href="adolecente.html"><button data-es="+ Info" data-en="+ Info">+ Info</button></a>
+      </div>
+
+      <!-- Adultos -->
+      <div class="carta" data-aos="flip-right">
+        <img src="imagnes/adultes.jpg" alt="Padre hablando con hijo" style="width:100%; height:250px; object-fit:cover; border-radius:10px;" />
+        <h3 data-es="Adultos" data-en="Adults">Adultos</h3>
+        <p data-es="+21 años
+¿Por qué no me habla? ¿Que lo hace comportarse asi? Seguramente hay situaciones en las que aparecen estas preguntas, pero puede llegar a ser por los cambios de la adolescencia y acá te los enseñamos.
+
+."
+           data-en="+21 years Why doesn't he speak to me? What makes him behave like this? There are certainly situations where these questions arise, but it could be due to changes during adolescence, and we will teach you about that here.">
+          +21 años
+¿Por qué no me habla? ¿Que lo hace comportarse asi? Seguramente hay situaciones en las que aparecen estas preguntas, pero puede llegar a ser por los cambios de la adolescencia y acá te los enseñamos.
+
+.
+        </p>
+        <a href="aDULTOS.HTML"><button data-es="+ Info" data-en="+ Info">+ Info</button></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="caracteristicas">
+    <h2 class="section-title" data-es="Contactos" data-en="Contacts">Contactos</h2>
+    <ul style="list-style: none; text-align:center; font-size:1.1em;">
+      <li data-es="Instagram: @CAdo_CrecimientoAdolescente" data-en="Instagram: @CAdo_Adolescent Growth">Instagram: @CAdo_CrecimientoAdolescente</li>
+      <li data-es="Email:CAdoCrecimientoAdolescente@gmail.com" data-en="Email:  CAdoCrecimientoAdolescente@gmail.com">Email: contacto@cado.org</li>
+      <ul data-es="Tel: +54 9 11 59625690 (Gastón) 
+      +54 9 11 22842085 (Bianca) 
+      +54 9 11 26544906 (Lautaro)" data-en="Phone: +54 9 11 59625690 (Gastón) 
+      +54 9 11 22842085 (Bianca) 
+      +54 9 11 26544906 (Lautaro)"></ul>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© CAdo 2025 - Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="java.js"></script>
+</body>
+</html>
