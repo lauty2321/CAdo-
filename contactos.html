@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title data-es="CAdo - Contactos" data-en="CAdo - Contacts">CAdo - Contactos</title>
   <meta name="description" content="Conoce al equipo de CAdo - Adolescentes ayudando a adolescentes en su desarrollo emocional y social">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="shortcut icon" href="img/logos/logo transparente.png" type="image/x-icon">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
@@ -20,11 +19,17 @@
       --success-color: #10b981;
       --warning-color: #f59e0b;
       --danger-color: #ef4444;
-      --border-radius: 12px;
-      --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
-      --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.15);
-      --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.2);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --purple: #8b5cf6;
+      --pink: #ec4899;
+      --orange: #f97316;
+      --cyan: #06b6d4;
+      --border-radius: 16px;
+      --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.15);
+      --shadow-heavy: 0 25px 70px rgba(0, 0, 0, 0.3);
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
     }
 
     * {
@@ -34,11 +39,94 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
       color: var(--text-dark);
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    .bg-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+
+    .shape:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .shape:nth-child(2) {
+      width: 120px;
+      height: 120px;
+      left: 20%;
+      animation-delay: 2s;
+    }
+
+    .shape:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      left: 70%;
+      animation-delay: 4s;
+    }
+
+    .shape:nth-child(4) {
+      width: 100px;
+      height: 100px;
+      left: 80%;
+      animation-delay: 6s;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     .container {
@@ -47,9 +135,11 @@
       padding: 0 1rem;
     }
 
-    /* Header styles */
+    /* Header with Glass Morphism */
     header {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: white;
       padding: 1rem 0;
       position: fixed;
@@ -75,10 +165,17 @@
     }
 
     .logo-cado {
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 2.5rem;
+      font-weight: 800;
       text-decoration: none;
-      color: rgb(9, 107, 255);
+      color: white;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      transition: var(--transition);
+    }
+
+    .logo-cado:hover {
+      transform: scale(1.05);
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
     }
 
     .nav-section {
@@ -93,49 +190,57 @@
       align-items: center;
     }
 
-    .main-nav a {
-         background-color: #005ebb;
+    .main-nav a, #translateBtn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       transition: var(--transition);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
     }
 
-    .main-nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
+    .main-nav a:hover, #translateBtn:hover {
+      background: rgba(255, 255, 255, 0.3);
       transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
     .hamburger {
       display: none;
-      background: transparent;
-      border: 2px solid white;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
       cursor: pointer;
-      font-weight: 500;
+      font-weight: 600;
       transition: var(--transition);
     }
 
-    .hamburger:hover {
-      background: rgba(255, 255, 255, 0.2);
+    /* Welcome Message with Parallax */
+    .welcome-section {
+      position: relative;
+      padding: 150px 0 100px;
+      text-align: center;
+      overflow: hidden;
     }
 
-    /* Welcome message */
     .welcome-message {
-      background: linear-gradient(135deg, var(--accent-color), #e0f2fe);
-      border: 2px solid #bae6fd;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
       border-radius: var(--border-radius);
-      padding: 2.5rem;
-      margin: 3rem auto;
-      max-width: 900px;
+      padding: 4rem;
+      margin: 0 auto;
+      max-width: 1000px;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: 500;
-      color: #0369a1;
-      box-shadow: var(--shadow-light);
+      color: white;
+      box-shadow: var(--shadow-heavy);
       position: relative;
       overflow: hidden;
     }
@@ -147,9 +252,9 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
       transform: rotate(45deg);
-      animation: shimmer 3s infinite;
+      animation: shimmer 4s infinite;
     }
 
     @keyframes shimmer {
@@ -157,42 +262,64 @@
       100% { transform: translateX(100%) rotate(45deg); }
     }
 
-    /* Team sections */
+    /* Enhanced Team Cards */
     .team-section {
       display: flex;
       align-items: center;
-      gap: 3rem;
-      margin: 4rem auto;
+      gap: 4rem;
+      margin: 5rem auto;
       max-width: 1200px;
-      padding: 2rem;
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-light);
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      box-shadow: var(--shadow-heavy);
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: slideGlow 3s infinite;
+    }
+
+    @keyframes slideGlow {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
     }
 
     .team-section:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-medium);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-heavy);
     }
 
     .team-section.reverse {
       flex-direction: row-reverse;
     }
 
+    /* 3D Flip Cards Enhanced */
     .flip-card {
-      width: 280px;
-      height: 320px;
+      width: 320px;
+      height: 380px;
       perspective: 1000px;
       flex-shrink: 0;
       cursor: pointer;
+      position: relative;
     }
 
     .flip-card-inner {
       position: relative;
       width: 100%;
       height: 100%;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       transform-style: preserve-3d;
     }
 
@@ -207,9 +334,13 @@
       width: 100%;
       height: 100%;
       backface-visibility: hidden;
-      border-radius: var(--border-radius);
+      border-radius: 25px;
       overflow: hidden;
-      box-shadow: var(--shadow-light);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .flip-card-front {
+      background: linear-gradient(45deg, #667eea, #764ba2);
     }
 
     .flip-card-front img {
@@ -220,190 +351,483 @@
     }
 
     .flip-card-back {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--purple));
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding: 2rem;
+      padding: 3rem;
       text-align: center;
       transform: rotateY(180deg);
+      position: relative;
+    }
+
+    .flip-card-back::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
     }
 
     .flip-card-back h3 {
-      font-size: 1.5rem;
-      margin: 0 0 1rem 0;
+      font-size: 2rem;
+      margin: 0 0 1.5rem 0;
       font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .flip-card-back p {
-      font-size: 1rem;
+      font-size: 1.2rem;
       margin: 0;
-      opacity: 0.9;
+      opacity: 0.95;
+      font-weight: 500;
     }
 
     .team-info {
       flex: 1;
-      min-width: 300px;
+      min-width: 400px;
+      z-index: 2;
+      position: relative;
     }
 
     .team-info h2 {
-      font-size: 2rem;
-      margin: 0 0 1.5rem 0;
+      font-size: 2.8rem;
+      margin: 0 0 2rem 0;
       color: var(--primary-color);
-      font-weight: 700;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-color), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .team-info p {
-      font-size: 1.1rem;
-      line-height: 1.7;
+      font-size: 1.2rem;
+      line-height: 1.8;
       text-align: justify;
-      color: var(--text-light);
+      color: var(--text-dark);
       margin: 0;
+      font-weight: 400;
     }
 
-    /* Consultation form */
+    /* Enhanced Consultation Section */
     .consultation-section {
-      background: white;
-      padding: 4rem 2rem;
-      margin: 4rem 0;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-light);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 5rem 3rem;
+      margin: 5rem 0;
+      border-radius: 30px;
+      box-shadow: var(--shadow-heavy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .consultation-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--purple), var(--pink));
+      background-size: 400% 400%;
+      animation: gradientShift 3s ease infinite;
     }
 
     .section-title {
       text-align: center;
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      margin: 0 0 3rem 0;
-      font-weight: 700;
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin: 0 0 4rem 0;
+      background: linear-gradient(135deg, var(--primary-color), var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       position: relative;
     }
 
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -10px;
+      bottom: -15px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      border-radius: 2px;
+      width: 120px;
+      height: 6px;
+      background: linear-gradient(135deg, var(--primary-color), var(--purple));
+      border-radius: 3px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     }
 
+    /* Enhanced Form */
     .consultation-form {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       display: grid;
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
     .form-group {
       display: grid;
-      gap: 0.5rem;
+      gap: 0.8rem;
     }
 
     .form-group label {
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text-dark);
+      font-size: 1.1rem;
     }
 
-    .form-group input {
-      padding: 1rem;
-      border: 2px solid #e2e8f0;
-      border-radius: var(--border-radius);
-      font-size: 1rem;
+    .form-group input,
+    .form-group textarea {
+      padding: 1.5rem;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      font-size: 1.1rem;
       font-family: inherit;
       transition: var(--transition);
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
     }
 
-    .form-group input:focus {
+    .form-group input:focus,
+    .form-group textarea:focus {
       outline: none;
       border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(48, 106, 203, 0.1);
+      box-shadow: 0 0 0 4px rgba(48, 106, 203, 0.15);
+      background: white;
+      transform: translateY(-2px);
     }
 
     .radio-group {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1rem;
-      margin-top: 0.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
 
     .radio-item {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 1rem;
-      border: 2px solid #e2e8f0;
-      border-radius: var(--border-radius);
+      gap: 0.8rem;
+      padding: 1.5rem;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
       cursor: pointer;
       transition: var(--transition);
-      font-weight: 500;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .radio-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(48, 106, 203, 0.1), transparent);
+      transition: left 0.5s;
     }
 
     .radio-item:hover {
       border-color: var(--primary-color);
-      background: var(--accent-color);
+      background: rgba(48, 106, 203, 0.05);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-light);
+    }
+
+    .radio-item:hover::before {
+      left: 100%;
     }
 
     .radio-item input[type="radio"] {
       margin: 0;
       accent-color: var(--primary-color);
+      transform: scale(1.2);
     }
 
     .radio-item input[type="radio"]:checked + span {
       color: var(--primary-color);
-      font-weight: 600;
+      font-weight: 700;
     }
 
+    /* Enhanced Submit Button */
     .submit-btn {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--purple));
       color: white;
       border: none;
-      padding: 1.2rem 2rem;
-      border-radius: var(--border-radius);
-      font-size: 1.1rem;
-      font-weight: 600;
+      padding: 1.8rem 3rem;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      font-weight: 700;
       cursor: pointer;
       transition: var(--transition);
-      margin-top: 1rem;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
     }
 
     .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-medium);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .submit-btn:hover::before {
+      left: 100%;
     }
 
     .submit-btn:active {
-      transform: translateY(0);
+      transform: translateY(-2px) scale(1.02);
     }
 
-    .confirmation-message {
-      background: var(--success-color);
-      color: white;
-      padding: 1.5rem;
-      border-radius: var(--border-radius);
-      margin-top: 1rem;
+    /* Statistics Section */
+    .stats-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 5rem 0;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      padding: 3rem 2rem;
+      border-radius: 25px;
       text-align: center;
-      font-weight: 500;
-      display: none;
+      box-shadow: var(--shadow-medium);
+      transition: var(--transition);
+      border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
-   
+    .stat-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: var(--shadow-heavy);
+    }
 
-    /* Footer */
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    /* Interactive Elements */
+    .interactive-banner {
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: white;
+      padding: 4rem 2rem;
+      margin: 5rem 0;
+      border-radius: 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .interactive-banner:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-heavy);
+    }
+
+    .interactive-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-conic-gradient(from 0deg, transparent 0deg, rgba(255, 255, 255, 0.1) 1deg, transparent 2deg, transparent 10deg);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .interactive-banner h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      z-index: 2;
+      position: relative;
+    }
+
+    .interactive-banner p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Enhanced Chat Button */
+    .chat-toggle {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--purple));
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-heavy);
+      transition: var(--transition);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-toggle:hover {
+      transform: scale(1.1) rotate(15deg);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .chat-toggle::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--purple));
+      z-index: -1;
+      opacity: 0.3;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.1; }
+      100% { transform: scale(1); opacity: 0.3; }
+    }
+
+    /* Enhanced Footer */
     footer {
-      background: var(--text-dark);
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(20px);
       color: white;
       text-align: center;
-      padding: 2rem;
-      margin-top: 4rem;
+      padding: 4rem 2rem;
+      margin-top: 5rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Responsive design */
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--purple), var(--pink));
+      background-size: 400% 400%;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    /* Success Animation */
+    .success-animation {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+      pointer-events: none;
+    }
+
+    .checkmark {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: block;
+      stroke-width: 2;
+      stroke: var(--success-color);
+      stroke-miterlimit: 10;
+      box-shadow: inset 0 0 0 var(--success-color);
+      animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+      opacity: 0;
+    }
+
+    .checkmark__circle {
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+      stroke: var(--success-color);
+      fill: none;
+      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .checkmark__check {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    }
+
+    @keyframes stroke {
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes scale {
+      0%, 100% {
+        transform: none;
+        opacity: 1;
+      }
+      50% {
+        transform: scale3d(1.1, 1.1, 1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fill {
+      100% {
+        box-shadow: inset 0 0 0 30px var(--success-color);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -415,22 +839,28 @@
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--primary-color);
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(20px);
         flex-direction: column;
-        padding: 1rem;
-        box-shadow: var(--shadow-medium);
+        padding: 2rem;
+        border-radius: 0 0 20px 20px;
       }
 
       .main-nav.visible {
         display: flex;
       }
 
+      .welcome-message {
+        font-size: 1.2rem;
+        padding: 3rem;
+      }
+
       .team-section,
       .team-section.reverse {
         flex-direction: column;
         text-align: center;
-        gap: 2rem;
-        padding: 1.5rem;
+        gap: 3rem;
+        padding: 2rem;
       }
 
       .flip-card {
@@ -438,40 +868,59 @@
         max-width: 300px;
       }
 
-      .team-info p {
-        text-align: center;
+      .team-info {
+        min-width: auto;
+      }
+
+      .team-info h2 {
+        font-size: 2.2rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+      }
+
+      .consultation-section {
+        padding: 3rem 1.5rem;
       }
 
       .radio-group {
         grid-template-columns: 1fr;
       }
 
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .consultation-section {
-        padding: 2rem 1rem;
+      .stats-section {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
       }
     }
 
-    @media (max-width: 480px) {
-      .welcome-message {
-        font-size: 1rem;
-        padding: 2rem;
-        margin: 2rem 1rem;
-      }
-
-      .team-info h2 {
-        font-size: 1.5rem;
-      }
-
-      .team-info p {
-        font-size: 1rem;
-      }
+    /* Loading States */
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+      position: relative;
     }
 
-    /* Accessibility improvements */
+    .loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 25px;
+      height: 25px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Accessibility */
     .sr-only {
       position: absolute;
       width: 1px;
@@ -487,39 +936,60 @@
     /* Focus styles */
     button:focus,
     input:focus,
+    textarea:focus,
     .radio-item:focus-within {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 2px;
+      outline: 3px solid var(--primary-color);
+      outline-offset: 3px;
     }
 
-    /* Loading states */
-    .loading {
-      opacity: 0.7;
-      pointer-events: none;
-      cursor: not-allowed;
+    /* Error states */
+    .form-group input.error,
+    .form-group textarea.error {
+      border-color: var(--danger-color) !important;
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15) !important;
+      animation: shake 0.5s ease-in-out;
     }
 
-    .loading::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 20px;
-      height: 20px;
-      border: 2px solid transparent;
-      border-top: 2px solid white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
     }
 
-    @keyframes spin {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    .confirmation-message {
+      background: var(--success-color);
+      color: white;
+      padding: 2rem;
+      border-radius: 15px;
+      margin-top: 2rem;
+      text-align: center;
+      font-weight: 600;
+      display: none;
+      box-shadow: var(--shadow-medium);
+      animation: slideUp 0.5s ease-out;
+    }
+
+    @keyframes slideUp {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="animated-bg"></div>
+  <div class="bg-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
   <header>
     <div class="header-container">
       <div class="logo-section">
@@ -543,17 +1013,30 @@
     </div>
   </header>
 
-  <main style="padding-top: 100px;">
-    <div class="container">
-      <div class="welcome-message" data-aos="fade-up">
-        <p data-es="Somos como vos: vivimos, sentimos y aprendemos cada día. Queremos que sepas que podés hablarnos de todo, sin miedo y sin filtros. Con lo que vamos aprendiendo, buscamos que todos podamos entender mejor esta etapa y acompañarnos en el camino."
-           data-en="We are like you: we live, feel, and learn every day. We want you to know that you can talk to us about anything, without fear or filters. With what we are learning, we aim for everyone to better understand this stage and support each other along the way.">
-          Somos como vos: vivimos, sentimos y aprendemos cada día. Queremos que sepas que podés hablarnos de todo, sin miedo y sin filtros. Con lo que vamos aprendiendo, buscamos que todos podamos entender mejor esta etapa y acompañarnos en el camino.
-        </p>
+  <main>
+    <!-- Welcome Section with Enhanced Design -->
+    <section class="welcome-section">
+      <div class="container">
+        <div class="welcome-message" data-aos="fade-up">
+          <p data-es="Somos como vos: vivimos, sentimos y aprendemos cada día. Queremos que sepas que podés hablarnos de todo, sin miedo y sin filtros. Con lo que vamos aprendiendo, buscamos que todos podamos entender mejor esta etapa y acompañarnos en el camino."
+             data-en="We are like you: we live, feel, and learn every day. We want you to know that you can talk to us about anything, without fear or filters. With what we are learning, we aim for everyone to better understand this stage and support each other along the way.">
+            Somos como vos: vivimos, sentimos y aprendemos cada día. Queremos que sepas que podés hablarnos de todo, sin miedo y sin filtros. Con lo que vamos aprendiendo, buscamos que todos podamos entender mejor esta etapa y acompañarnos en el camino.
+          </p>
+        </div>
       </div>
+    </section>
 
+ 
+
+      <!-- Interactive Banner -->
+      <section class="interactive-banner" data-aos="zoom-in" onclick="showMotivationalMessage()">
+        <h3 data-es="¡Juntos construimos un futuro mejor!" data-en="Together we build a better future!">¡Juntos construimos un futuro mejor!</h3>
+        <p data-es="Cada conversación cuenta, cada historia importa. Haz clic para descubrir más." data-en="Every conversation counts, every story matters. Click to discover more.">Cada conversación cuenta, cada historia importa. Haz clic para descubrir más.</p>
+      </section>
+
+      <!-- Enhanced Team Members -->
       <!-- Male -->
-      <section class="team-section" data-aos="fade-up">
+      <section class="team-section" data-aos="fade-up" data-aos-delay="100">
         <div class="flip-card" tabindex="0" role="button" aria-label="Ver información de Male">
           <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -561,7 +1044,10 @@
             </div>
             <div class="flip-card-back">
               <h3>Male</h3>
-              <p data-es="Encargada de la información" data-en="Information Manager">Encargada de la información</p>
+              <p data-es="Especialista en Información y Recursos" data-en="Information and Resources Specialist">Especialista en Información y Recursos</p>
+              <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-heart"></i> Piano & Vóley
+              </div>
             </div>
           </div>
         </div>
@@ -575,7 +1061,7 @@
       </section>
 
       <!-- Bianca -->
-      <section class="team-section reverse" data-aos="fade-up">
+      <section class="team-section reverse" data-aos="fade-up" data-aos-delay="200">
         <div class="flip-card" tabindex="0" role="button" aria-label="Ver información de Bianca">
           <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -583,7 +1069,10 @@
             </div>
             <div class="flip-card-back">
               <h3>Bianca</h3>
-              <p data-es="Actividades con personas" data-en="Activities with people">Actividades con personas</p>
+              <p data-es="Coordinadora de Actividades Sociales" data-en="Social Activities Coordinator">Coordinadora de Actividades Sociales</p>
+              <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-music"></i> Música & <i class="fas fa-volleyball-ball"></i> Vóley
+              </div>
             </div>
           </div>
         </div>
@@ -597,7 +1086,7 @@
       </section>
 
       <!-- Gastón -->
-      <section class="team-section" data-aos="fade-up">
+      <section class="team-section" data-aos="fade-up" data-aos-delay="300">
         <div class="flip-card" tabindex="0" role="button" aria-label="Ver información de Gastón">
           <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -605,7 +1094,10 @@
             </div>
             <div class="flip-card-back">
               <h3>Gastón</h3>
-              <p data-es="Creador de CAdo" data-en="Creator of CAdo">Creador de CAdo</p>
+              <p data-es="Fundador y Visionario de CAdo" data-en="Founder and Visionary of CAdo">Fundador y Visionario de CAdo</p>
+              <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-guitar"></i> Violín & Guitarra <i class="fas fa-rainbow"></i>
+              </div>
             </div>
           </div>
         </div>
@@ -619,7 +1111,7 @@
       </section>
 
       <!-- Guada -->
-      <section class="team-section reverse" data-aos="fade-up">
+      <section class="team-section reverse" data-aos="fade-up" data-aos-delay="400">
         <div class="flip-card" tabindex="0" role="button" aria-label="Ver información de Guada">
           <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -627,7 +1119,10 @@
             </div>
             <div class="flip-card-back">
               <h3>Guada</h3>
-              <p data-es="Marketing y diseño" data-en="Marketing and Design">Marketing y diseño</p>
+              <p data-es="Directora Creativa y Marketing" data-en="Creative Director and Marketing">Directora Creativa y Marketing</p>
+              <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-palette"></i> Diseño & <i class="fas fa-spider"></i> Spiderman Fan
+              </div>
             </div>
           </div>
         </div>
@@ -641,7 +1136,7 @@
       </section>
 
       <!-- Lautaro -->
-      <section class="team-section" data-aos="fade-up">
+      <section class="team-section" data-aos="fade-up" data-aos-delay="500">
         <div class="flip-card" tabindex="0" role="button" aria-label="Ver información de Lautaro">
           <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -649,7 +1144,10 @@
             </div>
             <div class="flip-card-back">
               <h3>Lautaro</h3>
-              <p data-es="Programador" data-en="Programmer">Programador</p>
+              <p data-es="Desarrollador Principal y Arquitecto Web" data-en="Lead Developer and Web Architect">Desarrollador Principal y Arquitecto Web</p>
+              <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-code"></i> Programación & <i class="fas fa-dog"></i> Amante de los perros 
+              </div>
             </div>
           </div>
         </div>
@@ -663,14 +1161,15 @@
       </section>
     </div>
 
-    <!-- Consultation Section -->
+    <!-- Enhanced Consultation Section -->
     <section class="consultation-section" data-aos="fade-up">
       <div class="container">
-        <h2 class="section-title" data-es="Centro de Consultas" data-en="Consultation Center">Centro de Consultas</h2>
+        <h2 class="section-title" data-es="Centro de Consultas Avanzado" data-en="Advanced Consultation Center">Centro de Consultas Avanzado</h2>
         
         <form class="consultation-form" id="consultationForm">
           <div class="form-group">
             <label for="nombre">
+              <i class="fas fa-user"></i>
               <span data-es="Nombre:" data-en="Name:">Nombre:</span>
             </label>
             <input type="text" id="nombre" name="nombre" 
@@ -684,6 +1183,7 @@
 
           <div class="form-group">
             <label for="apellido">
+              <i class="fas fa-id-card"></i>
               <span data-es="Apellido:" data-en="Last Name:">Apellido:</span>
             </label>
             <input type="text" id="apellido" name="apellido" 
@@ -696,7 +1196,19 @@
           </div>
 
           <div class="form-group">
+            <label for="edad">
+              <i class="fas fa-birthday-cake"></i>
+              <span data-es="Edad (opcional):" data-en="Age (optional):">Edad (opcional):</span>
+            </label>
+            <input type="number" id="edad" name="edad" 
+                   placeholder="Tu edad" 
+                   min="10"
+                   max="99">
+          </div>
+
+          <div class="form-group">
             <label>
+              <i class="fas fa-users"></i>
               <span data-es="Con quién querés hablar:" data-en="Who would you like to talk to:">Con quién querés hablar:</span>
             </label>
             <div class="radio-group" role="radiogroup" aria-required="true">
@@ -724,21 +1236,41 @@
           </div>
 
           <div class="form-group">
+            <label for="tipo-consulta">
+              <i class="fas fa-question-circle"></i>
+              <span data-es="Tipo de consulta:" data-en="Type of consultation:">Tipo de consulta:</span>
+            </label>
+            <select id="tipo-consulta" name="tipo-consulta" style="padding: 1.5rem; border: 2px solid rgba(0, 0, 0, 0.1); border-radius: 15px; font-size: 1.1rem; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); width: 100%;">
+              <option value="">Selecciona un tipo</option>
+              <option value="emocional">Apoyo emocional</option>
+              <option value="academico">Ayuda académica</option>
+              <option value="familiar">Problemas familiares</option>
+              <option value="social">Relaciones sociales</option>
+              <option value="identidad">Identidad y autoestima</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
             <label for="mensaje">
+              <i class="fas fa-comment-dots"></i>
               <span data-es="Tu mensaje (opcional):" data-en="Your message (optional):">Tu mensaje (opcional):</span>
             </label>
             <textarea id="mensaje" name="mensaje" 
                       placeholder="Cuéntanos qué te gustaría hablar..."
                       rows="4"
                       maxlength="500"
-                      aria-describedby="mensaje-help"></textarea>
-            <small id="mensaje-help" class="form-help">Máximo 500 caracteres</small>
+                      aria-describedby="mensaje-help"
+                      style="padding: 1.5rem; border: 2px solid rgba(0, 0, 0, 0.1); border-radius: 15px; font-size: 1.1rem; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); width: 100%; resize: vertical;"></textarea>
+            <small id="mensaje-help" class="form-help">500 caracteres restantes</small>
           </div>
 
           <button type="submit" class="submit-btn" id="submitBtn">
-            <span class="btn-text" data-es="Enviar consulta" data-en="Send consultation">Enviar consulta</span>
+            <span class="btn-text" data-es="Enviar Consulta Segura" data-en="Send Secure Consultation">
+              <i class="fas fa-paper-plane"></i> Enviar Consulta Segura
+            </span>
             <span class="btn-loading" style="display: none;">
-              <i class="fas fa-spinner fa-spin"></i> Enviando...
+              <i class="fas fa-spinner fa-spin"></i> Procesando...
             </span>
           </button>
         </form>
@@ -750,32 +1282,64 @@
     </section>
   </main>
 
-  <!-- Chat Toggle Button -->
+  <!-- Enhanced Chat Button -->
   <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat de ayuda">
     <i class="fas fa-comments"></i>
   </button>
 
-  <!-- Footer -->
+  <!-- Success Animation -->
+  <div id="successAnimation" class="success-animation" style="display: none;">
+    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+      <circle class="checkmark__circle" fill="none" cx="26" cy="26" r="25"/>
+      <path class="checkmark__check" fill="none" d="l-2,2 l7,7 l13,-13"/>
+    </svg>
+  </div>
+
+  <!-- Enhanced Footer -->
   <footer>
     <div class="container">
-      <p data-es="© CAdo 2025 - Todos los derechos reservados." data-en="© CAdo 2025 - All rights reserved.">
-        © CAdo 2025 - Todos los derechos reservados.
-      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 2rem;">
+        <div>
+          <h4 style="margin-bottom: 1rem; font-size: 1.5rem; color: white;">CAdo</h4>
+          <p style="opacity: 0.8;">Adolescentes ayudando a adolescentes en su crecimiento emocional y social.</p>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 1rem; font-size: 1.2rem; color: white;">Enlaces Rápidos</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <a href="index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: var(--transition);">Inicio</a>
+            <a href="adolescente.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: var(--transition);">Adolescentes</a>
+            <a href="adultos.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: var(--transition);">Adultos</a>
+          </div>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 1rem; font-size: 1.2rem; color: white;">Contacto</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; opacity: 0.8;">
+            <div><i class="fas fa-envelope"></i> CAdocrecimientoadolescente@gmail.com</div>
+           
+            <div><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+        <p data-es="© CAdo 2025 - Todos los derechos reservados. Hecho con ❤️ para adolescentes." data-en="© CAdo 2025 - All rights reserved. Made with ❤️ for teenagers.">
+          © CAdo 2025 - Todos los derechos reservados. Hecho con ❤️ para adolescentes.
+        </p>
+      </div>
     </div>
   </footer>
-  
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    // Initialize AOS
+    // Initialize AOS with enhanced settings
     AOS.init({
-      duration: 800,
-      offset: 100,
-      once: true
+      duration: 1200,
+      offset: 50,
+      once: true,
+      easing: 'ease-out-cubic'
     });
 
-    // Mobile menu toggle
+    // Enhanced Mobile Menu
     const menuToggle = document.getElementById('menuToggle');
     const mainNav = document.getElementById('mainNav');
     
@@ -783,35 +1347,86 @@
       mainNav.classList.toggle('visible');
       const isVisible = mainNav.classList.contains('visible');
       menuToggle.setAttribute('aria-expanded', isVisible);
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!menuToggle.contains(e.target) && !mainNav.contains(e.target)) {
-        mainNav.classList.remove('visible');
-        menuToggle.setAttribute('aria-expanded', 'false');
+      
+      // Animate hamburger icon
+      const icon = menuToggle.querySelector('i');
+      if (isVisible) {
+        icon.className = 'fas fa-times';
+      } else {
+        icon.className = 'fas fa-bars';
       }
     });
 
-    // Flip cards interaction for mobile
+    // Enhanced Card Interactions
     const flipCards = document.querySelectorAll('.flip-card');
-    flipCards.forEach(card => {
+    flipCards.forEach((card, index) => {
       card.addEventListener('click', () => {
         if (window.matchMedia("(hover: none)").matches) {
           card.classList.toggle('flipped');
         }
       });
 
-      // Keyboard support
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           card.classList.toggle('flipped');
         }
       });
+
+      // Add staggered hover effect
+      card.addEventListener('mouseenter', () => {
+        setTimeout(() => {
+          card.style.transform += ' scale(1.02)';
+        }, index * 100);
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
     });
 
-    // WhatsApp numbers mapping
+    // Animated Counter for Statistics
+    function animateCounter(element, target, duration = 2000) {
+      const start = 0;
+      const startTime = performance.now();
+      
+      function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const current = Math.floor(progress * target);
+        element.textContent = current + (element.id === 'experienciaCounter' ? '+' : '+');
+        
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        }
+      }
+      
+      requestAnimationFrame(updateCounter);
+    }
+
+    // Trigger counters when in view
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          const targetValue = parseInt(element.textContent);
+          animateCounter(element, targetValue);
+          counterObserver.unobserve(element);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.stat-number').forEach(counter => {
+      counterObserver.observe(counter);
+    });
+
+    // WhatsApp Integration
     const whatsappNumbers = {
       "Guada": "5492304309043",
       "Bianca": "5491122842085",
@@ -820,18 +1435,18 @@
       "Male": "5491162165178"
     };
 
-    // Form handling with WhatsApp integration
+    // Enhanced Form Handling
     const consultationForm = document.getElementById('consultationForm');
     const submitBtn = document.getElementById('submitBtn');
     const confirmationMessage = document.getElementById('confirmationMessage');
+    const successAnimation = document.getElementById('successAnimation');
 
     consultationForm.addEventListener('submit', function(event) {
-      mostrarConfirmacion(event);
+      event.preventDefault();
+      handleFormSubmission();
     });
 
-    function mostrarConfirmacion(event) {
-      event.preventDefault();
-      
+    function handleFormSubmission() {
       // Show loading state
       submitBtn.classList.add('loading');
       submitBtn.disabled = true;
@@ -839,78 +1454,155 @@
       submitBtn.querySelector('.btn-loading').style.display = 'inline-flex';
       
       // Get form data
-      const nombre = document.getElementById("nombre").value;
-      const apellido = document.getElementById("apellido").value;
-      const personaSelected = document.querySelector('input[name="persona"]:checked');
+      const formData = new FormData(consultationForm);
+      const nombre = formData.get('nombre');
+      const apellido = formData.get('apellido');
+      const edad = formData.get('edad');
+      const persona = formData.get('persona');
+      const tipoConsulta = formData.get('tipo-consulta');
+      const mensaje = formData.get('mensaje');
       
-      if (!personaSelected) {
+      if (!persona) {
         showError("Por favor selecciona con quién quieres hablar");
         resetButtonState();
         return;
       }
       
-      const persona = personaSelected.value;
+      // Validate form
+      if (!validateForm()) {
+        resetButtonState();
+        return;
+      }
+      
       const numeroWhatsApp = whatsappNumbers[persona];
       
-      // Show success message
-      const mensaje = `✅ Hola ${nombre} ${apellido}, tu mensaje fue recibido por CAdo. Te contactará ${persona}.`;
-      
-      confirmationMessage.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <i class="fas fa-check-circle" style="font-size: 1.2em;"></i>
-          <div>
-            <strong>¡Consulta enviada exitosamente!</strong><br>
-            ${mensaje}
-            <br><br>
-            <small>Se abrirá WhatsApp para continuar la conversación...</small>
-          </div>
-        </div>
-      `;
-      confirmationMessage.style.display = 'block';
-      confirmationMessage.style.background = 'var(--success-color)';
-      
-      // Create WhatsApp message
-      const texto = `Hola acabo de completar el formulario de consulta de CAdo y me gustaria mucho que me brindes mas informacion , *Mi nombre es ${nombre} ${apellido}.*`;
-      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
-      
-      // Small delay before opening WhatsApp
+      // Show success animation
       setTimeout(() => {
-        window.open(url, '_blank');
+        showSuccessAnimation();
+        showConfirmationMessage(nombre, apellido, persona);
         
-        // Reset form after successful submission
-        consultationForm.reset();
+        // Create enhanced WhatsApp message
+        let texto = `¡Hola! Acabo de completar el formulario de consulta de CAdo.\n\n`;
+        texto += `👤 Mi nombre es: ${nombre} ${apellido}\n`;
+        if (edad) texto += `🎂 Edad: ${edad} años\n`;
+        if (tipoConsulta) texto += `📋 Tipo de consulta: ${tipoConsulta}\n`;
+        if (mensaje) texto += `💬 Mensaje: ${mensaje}\n`;
+        texto += `\n¡Me gustaría que me brindes más información!`;
         
-        // Hide confirmation after 10 seconds
+        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+        
         setTimeout(() => {
-          confirmationMessage.style.display = 'none';
-        }, 10000);
+          window.open(url, '_blank');
+          consultationForm.reset();
+          updateCharacterCount();
+        }, 2000);
         
         resetButtonState();
       }, 1500);
+    }
 
-      // Scroll to confirmation
+    function showSuccessAnimation() {
+      successAnimation.style.display = 'block';
+      setTimeout(() => {
+        successAnimation.style.display = 'none';
+      }, 3000);
+    }
+
+    function showConfirmationMessage(nombre, apellido, persona) {
+      const mensaje = `✅ ¡Perfecto ${nombre}! Tu consulta fue recibida exitosamente por CAdo.`;
+      
+      confirmationMessage.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 200px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <i class="fas fa-check-circle" style="font-size: 1.5em; color: white;"></i>
+              <strong style="font-size: 1.2em;">¡Consulta enviada exitosamente!</strong>
+            </div>
+            <p style="margin: 10px 0; font-size: 1.1em;">${mensaje}</p>
+            <p style="margin: 10px 0; opacity: 0.9;">
+              <i class="fas fa-user-friends"></i> ${persona} se contactará contigo pronto
+            </p>
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
+              <i class="fas fa-whatsapp" style="color: #25D366;"></i>
+              <span>Abriendo WhatsApp para continuar la conversación...</span>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      confirmationMessage.style.display = 'block';
+      confirmationMessage.style.background = 'linear-gradient(135deg, var(--success-color), #059669)';
       confirmationMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      setTimeout(() => {
+        confirmationMessage.style.display = 'none';
+      }, 15000);
+    }
+
+    function validateForm() {
+      const inputs = consultationForm.querySelectorAll('input[required], select[required]');
+      let isValid = true;
+      
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          showFieldError(input, 'Este campo es requerido');
+          isValid = false;
+        } else if (input.type === 'text' && input.value.trim().length < 2) {
+          showFieldError(input, 'Mínimo 2 caracteres');
+          isValid = false;
+        }
+      });
+      
+      const radioGroup = consultationForm.querySelector('input[name="persona"]:checked');
+      if (!radioGroup) {
+        const radioContainer = consultationForm.querySelector('.radio-group');
+        radioContainer.style.border = '2px solid var(--danger-color)';
+        radioContainer.style.borderRadius = '15px';
+        isValid = false;
+        
+        setTimeout(() => {
+          radioContainer.style.border = '';
+        }, 3000);
+      }
+      
+      return isValid;
+    }
+
+    function showFieldError(field, message) {
+      field.classList.add('error');
+      
+      // Create or update error message
+      let errorMsg = field.parentNode.querySelector('.error-message');
+      if (!errorMsg) {
+        errorMsg = document.createElement('small');
+        errorMsg.className = 'error-message';
+        errorMsg.style.color = 'var(--danger-color)';
+        errorMsg.style.fontSize = '0.9em';
+        errorMsg.style.marginTop = '5px';
+        field.parentNode.appendChild(errorMsg);
+      }
+      errorMsg.textContent = message;
+      
+      setTimeout(() => {
+        field.classList.remove('error');
+        if (errorMsg) errorMsg.remove();
+      }, 5000);
     }
 
     function resetButtonState() {
       submitBtn.classList.remove('loading');
       submitBtn.disabled = false;
-      submitBtn.querySelector('.btn-text').style.display = 'inline';
+      submitBtn.querySelector('.btn-text').style.display = 'inline-flex';
       submitBtn.querySelector('.btn-loading').style.display = 'none';
     }
 
-    function showConfirmation(data) {
-      // This function is kept for compatibility but main logic moved to mostrarConfirmacion
-      mostrarConfirmacion({ preventDefault: () => {} });
-    }
-
-    function showError() {
+    function showError(message) {
       confirmationMessage.innerHTML = `
         <div style="display: flex; align-items: center; gap: 10px;">
           <i class="fas fa-exclamation-triangle" style="font-size: 1.2em;"></i>
           <div>
             <strong>Error al enviar</strong><br>
-            Hubo un problema al enviar tu consulta. Por favor intenta nuevamente.
+            ${message}
           </div>
         </div>
       `;
@@ -922,26 +1614,34 @@
       }, 5000);
     }
 
-    // Character counter for textarea
+    // Enhanced Character Counter
     const messageTextarea = document.getElementById('mensaje');
     const messageHelp = document.getElementById('mensaje-help');
     
-    if (messageTextarea && messageHelp) {
-      messageTextarea.addEventListener('input', () => {
+    function updateCharacterCount() {
+      if (messageTextarea && messageHelp) {
         const remaining = 500 - messageTextarea.value.length;
         messageHelp.textContent = `${remaining} caracteres restantes`;
         
         if (remaining < 50) {
           messageHelp.style.color = 'var(--warning-color)';
+          messageHelp.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${remaining} caracteres restantes`;
         } else if (remaining < 20) {
           messageHelp.style.color = 'var(--danger-color)';
+          messageHelp.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${remaining} caracteres restantes`;
         } else {
           messageHelp.style.color = 'var(--text-light)';
+          messageHelp.innerHTML = `<i class="fas fa-info-circle"></i> ${remaining} caracteres restantes`;
         }
-      });
+      }
+    }
+    
+    if (messageTextarea) {
+      messageTextarea.addEventListener('input', updateCharacterCount);
+      updateCharacterCount(); // Initial call
     }
 
-    // Language toggle functionality
+    // Enhanced Language Toggle
     const translateBtn = document.getElementById('translateBtn');
     let currentLang = 'es';
     
@@ -949,24 +1649,260 @@
       currentLang = currentLang === 'es' ? 'en' : 'es';
       translateBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
       
-      // Update all translatable elements
+      // Add loading effect
+      translateBtn.style.opacity = '0.5';
+      setTimeout(() => {
+        translateBtn.style.opacity = '1';
+      }, 300);
+      
+      // Update all translatable elements with animation
       const translatableElements = document.querySelectorAll('[data-es][data-en]');
-      translatableElements.forEach(element => {
-        const text = element.getAttribute(`data-${currentLang}`);
-        if (text) {
-          if (element.tagName === 'INPUT' && element.type !== 'submit') {
-            element.placeholder = text;
-          } else {
-            element.textContent = text;
+      translatableElements.forEach((element, index) => {
+        setTimeout(() => {
+          const text = element.getAttribute(`data-${currentLang}`);
+          if (text) {
+            element.style.opacity = '0.5';
+            setTimeout(() => {
+              if (element.tagName === 'INPUT' && element.type !== 'submit') {
+                element.placeholder = text;
+              } else {
+                element.textContent = text;
+              }
+              element.style.opacity = '1';
+            }, 150);
           }
-        }
+        }, index * 50);
       });
       
-      // Update page title
       document.title = currentLang === 'es' ? 'CAdo - Contactos' : 'CAdo - Contacts';
     });
 
-    // Smooth scrolling for internal links
+    // Interactive Banner Functionality
+    function showMotivationalMessage() {
+      const messages = [
+        "🌟 Tu voz importa y tu historia vale la pena",
+        "💪 Cada día es una oportunidad para crecer",
+        "🤝 Juntos podemos superar cualquier desafío",
+        "✨ Eres más fuerte de lo que crees",
+        "🌈 Después de cada tormenta viene el arcoíris"
+      ];
+      
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+      
+      // Create floating message
+      const floatingMsg = document.createElement('div');
+      floatingMsg.textContent = randomMessage;
+      floatingMsg.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, var(--purple), var(--pink));
+        color: white;
+        padding: 2rem 3rem;
+        border-radius: 25px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        z-index: 10000;
+        box-shadow: var(--shadow-heavy);
+        animation: fadeInScale 0.5s ease-out;
+        text-align: center;
+        max-width: 90%;
+      `;
+      
+      document.body.appendChild(floatingMsg);
+      
+      setTimeout(() => {
+        floatingMsg.style.animation = 'fadeOutScale 0.5s ease-in forwards';
+        setTimeout(() => {
+          document.body.removeChild(floatingMsg);
+        }, 500);
+      }, 3000);
+    }
+
+    // Add CSS animations for floating messages
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeInScale {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.5);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+      
+      @keyframes fadeOutScale {
+        0% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.5);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Enhanced Chat Functionality
+    const chatToggle = document.getElementById('chatToggle');
+    let chatOpen = false;
+    
+    chatToggle.addEventListener('click', () => {
+      if (!chatOpen) {
+        openChat();
+      } else {
+        closeChat();
+      }
+    });
+
+    function openChat() {
+      chatOpen = true;
+      chatToggle.innerHTML = '<i class="fas fa-times"></i>';
+      chatToggle.style.background = 'linear-gradient(135deg, var(--danger-color), #dc2626)';
+      
+      // Create chat window
+      const chatWindow = document.createElement('div');
+      chatWindow.id = 'chatWindow';
+      chatWindow.innerHTML = `
+        <div style="background: white; border-radius: 20px; box-shadow: var(--shadow-heavy); width: 350px; height: 500px; position: fixed; bottom: 100px; right: 2rem; z-index: 9999; display: flex; flex-direction: column; overflow: hidden; animation: slideUp 0.3s ease-out;">
+          <div style="background: linear-gradient(135deg, var(--primary-color), var(--purple)); color: white; padding: 1.5rem; text-align: center; font-weight: 600; font-size: 1.1rem;">
+            <i class="fas fa-comments"></i> Chat de Ayuda CAdo
+          </div>
+          <div style="flex: 1; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; overflow-y: auto;">
+            <div style="background: #f3f4f6; border-radius: 15px; padding: 1rem; margin-bottom: 1rem;">
+              <p style="margin: 0; color: var(--text-dark);"><strong>¡Hola! 👋</strong></p>
+              <p style="margin: 0.5rem 0 0 0; color: var(--text-light);">¿En qué podemos ayudarte hoy?</p>
+            </div>
+            <div style="display: grid; gap: 0.5rem;">
+              <button onclick="quickMessage('Necesito ayuda emocional')" style="background: rgba(48, 106, 203, 0.1); border: 2px solid var(--primary-color); color: var(--primary-color); padding: 1rem; border-radius: 10px; cursor: pointer; font-weight: 500; transition: var(--transition);">💙 Apoyo Emocional</button>
+              <button onclick="quickMessage('Tengo problemas familiares')" style="background: rgba(139, 92, 246, 0.1); border: 2px solid var(--purple); color: var(--purple); padding: 1rem; border-radius: 10px; cursor: pointer; font-weight: 500; transition: var(--transition);">👨‍👩‍👧‍👦 Problemas Familiares</button>
+              <button onclick="quickMessage('Ayuda con relaciones sociales')" style="background: rgba(236, 72, 153, 0.1); border: 2px solid var(--pink); color: var(--pink); padding: 1rem; border-radius: 10px; cursor: pointer; font-weight: 500; transition: var(--transition);">👥 Relaciones Sociales</button>
+              <button onclick="quickMessage('Consulta sobre identidad')" style="background: rgba(6, 182, 212, 0.1); border: 2px solid var(--cyan); color: var(--cyan); padding: 1rem; border-radius: 10px; cursor: pointer; font-weight: 500; transition: var(--transition);">🌈 Identidad Personal</button>
+            </div>
+          </div>
+          <div style="padding: 1rem; border-top: 1px solid #e5e7eb;">
+            <p style="margin: 0; font-size: 0.9rem; color: var(--text-light); text-align: center;">
+              <i class="fas fa-shield-alt"></i> Conversación confidencial y segura
+            </p>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(chatWindow);
+    }
+
+    function closeChat() {
+      chatOpen = false;
+      chatToggle.innerHTML = '<i class="fas fa-comments"></i>';
+      chatToggle.style.background = 'linear-gradient(135deg, var(--primary-color), var(--purple))';
+      
+      const chatWindow = document.getElementById('chatWindow');
+      if (chatWindow) {
+        chatWindow.style.animation = 'slideDown 0.3s ease-in forwards';
+        setTimeout(() => {
+          document.body.removeChild(chatWindow);
+        }, 300);
+      }
+    }
+
+    window.quickMessage = function(message) {
+      // Pre-fill form with selected message type
+      const messageTextarea = document.getElementById('mensaje');
+      if (messageTextarea) {
+        messageTextarea.value = `Hola, ${message.toLowerCase()}. Me gustaría recibir ayuda y orientación sobre este tema.`;
+        updateCharacterCount();
+      }
+      
+      // Scroll to form
+      document.querySelector('.consultation-section').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+      
+      closeChat();
+      
+      // Highlight form
+      const form = document.querySelector('.consultation-form');
+      form.style.transform = 'scale(1.02)';
+      form.style.boxShadow = '0 0 30px rgba(48, 106, 203, 0.3)';
+      setTimeout(() => {
+        form.style.transform = '';
+        form.style.boxShadow = '';
+      }, 2000);
+    };
+
+    // Add slide animations for chat
+    const chatStyle = document.createElement('style');
+    chatStyle.textContent = `
+      @keyframes slideUp {
+        0% {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes slideDown {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(chatStyle);
+
+    // Enhanced Form Validation
+    const inputs = document.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+      input.addEventListener('blur', validateField);
+      input.addEventListener('input', clearFieldErrors);
+    });
+
+    function validateField(e) {
+      const field = e.target;
+      const value = field.value.trim();
+      
+      clearFieldErrors(e);
+      
+      if (field.required && !value) {
+        showFieldError(field, 'Este campo es requerido');
+        return false;
+      }
+      
+      if (field.type === 'text' && value.length > 0 && value.length < 2) {
+        showFieldError(field, 'Mínimo 2 caracteres');
+        return false;
+      }
+      
+      if (field.type === 'number') {
+        const num = parseInt(value);
+        if (value && (num < 10 || num > 99)) {
+          showFieldError(field, 'Edad debe estar entre 10 y 99 años');
+          return false;
+        }
+      }
+      
+      return true;
+    }
+
+    function clearFieldErrors(e) {
+      const field = e.target;
+      field.classList.remove('error');
+      const errorMsg = field.parentNode.querySelector('.error-message');
+      if (errorMsg) errorMsg.remove();
+    }
+
+    // Smooth Scrolling Enhancement
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -980,80 +1916,66 @@
       });
     });
 
-    // Basic chat functionality
-    const chatToggle = document.getElementById('chatToggle');
-    chatToggle.addEventListener('click', () => {
-      // This would open your existing chat widget
-      alert('Chat functionality would be integrated here with your existing chat system');
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !mainNav.contains(e.target)) {
+        mainNav.classList.remove('visible');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.querySelector('i').className = 'fas fa-bars';
+      }
     });
 
-    // Form validation enhancements
-    const inputs = document.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-      input.addEventListener('blur', validateField);
-      input.addEventListener('input', clearErrors);
+    // Enhanced Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      // Close modals with Escape key
+      if (e.key === 'Escape') {
+        if (chatOpen) {
+          closeChat();
+        }
+        if (mainNav.classList.contains('visible')) {
+          mainNav.classList.remove('visible');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.querySelector('i').className = 'fas fa-bars';
+        }
+      }
     });
 
-    function validateField(e) {
-      const field = e.target;
-      const value = field.value.trim();
-      
-      // Remove existing error styling
-      field.classList.remove('error');
-      
-      // Basic validation
-      if (field.required && !value) {
-        showFieldError(field, 'Este campo es requerido');
-        return false;
-      }
-      
-      if (field.type === 'text' && value.length < 2) {
-        showFieldError(field, 'Mínimo 2 caracteres');
-        return false;
-      }
-      
-      return true;
-    }
-
-    function showFieldError(field, message) {
-      field.classList.add('error');
-      
-      // Add error styling
-      if (!document.querySelector('.error-styles')) {
-        const style = document.createElement('style');
-        style.className = 'error-styles';
-        style.textContent = `
-          .form-group input.error,
-          .form-group textarea.error {
-            border-color: var(--danger-color) !important;
-            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
-          }
-        `;
-        document.head.appendChild(style);
+    // Performance Optimizations
+    let ticking = false;
+    function updateOnScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          // Add scroll-based animations here
+          ticking = false;
+        });
+        ticking = true;
       }
     }
+    
+    window.addEventListener('scroll', updateOnScroll, { passive: true });
 
-    function clearErrors(e) {
-      e.target.classList.remove('error');
-    }
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('🎉 CAdo Contacts Enhanced - Loaded Successfully!');
+      
+      // Add subtle entrance animations
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+    });
 
-    // Improved accessibility
-    const radioButtons = document.querySelectorAll('input[type="radio"]');
-    radioButtons.forEach(radio => {
-      radio.addEventListener('change', () => {
-        // Announce selection for screen readers
-        const selection = radio.value;
-        const announcement = document.createElement('div');
-        announcement.setAttribute('aria-live', 'polite');
-        announcement.setAttribute('aria-atomic', 'true');
-        announcement.className = 'sr-only';
-        announcement.textContent = `Seleccionado: ${selection}`;
-        document.body.appendChild(announcement);
-        
-        setTimeout(() => {
-          document.body.removeChild(announcement);
-        }, 1000);
-      });
+    // Error Handling
+    window.addEventListener('error', (e) => {
+      console.error('Error in CAdo page:', e.error);
+    });
+
+    // Update form help text styling
+    document.querySelectorAll('.form-help').forEach(help => {
+      help.style.display = 'flex';
+      help.style.alignItems = 'center';
+      help.style.gap = '5px';
+      help.style.fontSize = '0.9rem';
+      help.style.marginTop = '5px';
     });
   </script>
 </body>
